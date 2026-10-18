@@ -18,9 +18,11 @@ on:
   pull_request:
   workflow_dispatch:
 
+# A newer push cancels a superseded run, except on main: cancelling a run cancels all of
+# it, a deploy already under way included. On main a newer run queues behind it instead.
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 permissions:
   contents: read
@@ -90,8 +92,8 @@ jobs:
     needs: ci
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
-    # One deploy at a time, and never cancelled halfway: the CI concurrency group above
-    # cancels superseded builds, but a deploy that has started runs to the end.
+    # One deploy at a time, and never cancelled halfway (see the run-level concurrency
+    # above, which leaves main's runs alone for the same reason).
     concurrency:
       group: pages
       cancel-in-progress: false
