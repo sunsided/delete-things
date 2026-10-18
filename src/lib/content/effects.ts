@@ -28,7 +28,8 @@ export type Volume = {
 
 export const page = {
 	title: 'Sixty ways to delete a file.',
-	eyebrow: 'Lab / Interaction study 017',
+	/** The header adds a random study number, shuffled in on load. */
+	eyebrow: 'Lab / Interaction study',
 	lede: 'A rebuttal, in sixty parts (plus a bonus). Every button below is real: click it, hold it, swipe it, or regret it. Five of them are actually good UX. The rest range from fun to deeply stupid.',
 	playAll: 'Delete everything',
 	footer: 'Inspired by a silly little delete button. It was right.'

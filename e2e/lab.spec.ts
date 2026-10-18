@@ -16,6 +16,16 @@ test('prerenders the copy and every card', async ({ page }) => {
 	await expect(page.getByRole('heading', { level: 3 })).toHaveCount(61);
 });
 
+test('the study number shuffles, then settles on three digits', async ({ page }) => {
+	const shown = page.locator('header [aria-hidden="true"]').first();
+	const said = page.locator('header .visually-hidden');
+	// Assistive technology hears nothing until the shuffle is over, then the result.
+	await expect(said).toHaveText(/^\d{3}$/, { timeout: 3000 });
+	const n = (await said.textContent()) ?? '';
+	expect(n).not.toBe('000');
+	await expect(shown).toHaveText(n);
+});
+
 test('a click deletes, confirms and comes back', async ({ page }) => {
 	const s = stage(page, 'classic');
 	await s.getByRole('button', { name: 'Delete', exact: true }).click();
