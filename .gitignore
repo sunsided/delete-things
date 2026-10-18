@@ -1,0 +1,41 @@
+node_modules
+
+# Task runner state (checksums for sources/generates)
+.task
+
+# Output
+/.svelte-kit
+/build
+/storybook-static
+/playwright-report
+/test-results
+/blob-report
+.output
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# Generated: written by the design-token Vite plugin from src/lib/design/tokens.ts
+src/lib/design/tokens.css
+
+.yarn/install-state.gz
+
+# Vitest browser-mode attachments
+/.vitest
+
+# Playwright MCP scratch output
+/.playwright-mcp
+
+# The design handoff arrives as a zip; its contents live unpacked in design/
+*.zip

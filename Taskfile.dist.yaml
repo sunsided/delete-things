@@ -1,0 +1,145 @@
+version: '3'
+
+# Command vocabulary for the delete lab. The underlying tool is Yarn 4 (pinned via
+# `packageManager` in package.json); `task` is the stable front door, and CI runs these
+# same tasks so a local run and a pipeline run cannot disagree.
+#
+# Ports, fixed so this runs next to defx and web-again: dev :5193, preview :4193,
+# Storybook :6026.
+
+vars:
+  RUN: yarn
+
+tasks:
+  default:
+    cmds:
+      - task --list --sort=none
+    silent: true
+
+  install:
+    desc: Install dependencies
+    preconditions:
+      - sh: command -v yarn
+        msg: 'yarn not found — install Node 26 (see .nvmrc) and run: corepack enable'
+      - sh: '[ "$(node -v | cut -dv -f2 | cut -d. -f1)" -ge 26 ]'
+        msg: 'Node 26 required — run: nvm install 26 && nvm use'
+    cmds:
+      - '{{.RUN}} install {{.CLI_ARGS}}'
+
+  dev:
+    desc: Dev server with hot reload on :5193
+    cmds:
+      - '{{.RUN}} dev {{.CLI_ARGS}}'
+
+  build:
+    desc: Prerender the static site into build/
+    # once: `ci` reaches it both directly and through e2e's deps, and one build is enough.
+    run: once
+    cmds:
+      - '{{.RUN}} build'
+
+  preview:
+    desc: Serve build/ like a static host, on :4193
+    deps: [build]
+    cmds:
+      - '{{.RUN}} preview {{.CLI_ARGS}}'
+
+  storybook:
+    desc: Storybook dev server on :6026
+    aliases: [sb]
+    cmds:
+      - '{{.RUN}} storybook {{.CLI_ARGS}}'
+
+  storybook:build:
+    desc: Build the static Storybook into storybook-static/
+    cmds:
+      - '{{.RUN}} storybook:build'
+
+  # --- Checks ---------------------------------------------------------------
+
+  typecheck:
+    desc: Svelte and TypeScript type check
+    aliases: [check:types]
+    cmds:
+      - '{{.RUN}} check'
+
+  lint:
+    desc: Prettier check and ESLint
+    cmds:
+      - '{{.RUN}} lint'
+
+  lint:fix:
+    desc: Format and auto-fix what ESLint can
+    aliases: [fix]
+    cmds:
+      - '{{.RUN}} format'
+      - '{{.RUN}} eslint . --fix'
+
+  fmt:
+    desc: Format with Prettier
+    aliases: [format]
+    cmds:
+      - '{{.RUN}} format'
+
+  check:
+    desc: All static checks — lint then type check
+    cmds:
+      - task: lint
+      - task: typecheck
+
+  test:
+    desc: Unit and component tests
+    deps: [browsers]
+    cmds:
+      - '{{.RUN}} test {{.CLI_ARGS}}'
+
+  test:component:
+    desc: Only the component tests, in a real browser
+    deps: [browsers]
+    cmds:
+      - '{{.RUN}} test:component {{.CLI_ARGS}}'
+
+  test:watch:
+    desc: Unit tests in watch mode
+    cmds:
+      - '{{.RUN}} test:unit {{.CLI_ARGS}}'
+
+  browsers:
+    desc: Install the Playwright browsers
+    run: once
+    cmds:
+      - '{{.RUN}} browsers'
+
+  e2e:
+    desc: Playwright against the built site
+    aliases: [test:e2e]
+    deps: [build, browsers]
+    cmds:
+      - '{{.RUN}} test:e2e {{.CLI_ARGS}}'
+
+  e2e:ui:
+    desc: Playwright in UI mode
+    deps: [build, browsers]
+    cmds:
+      - '{{.RUN}} test:e2e:ui'
+
+  ci:
+    desc: The full chain — check, unit tests, build, end-to-end, Storybook
+    cmds:
+      - task: check
+      - task: test
+      - task: build
+      - task: e2e
+      # Not a test, a compile gate: stories rot silently otherwise.
+      - task: storybook:build
+
+  clean:
+    desc: Remove build output
+    cmds:
+      - rm -rf build .svelte-kit storybook-static playwright-report test-results
+
+  clean:all:
+    desc: Also remove node_modules, generated sources and caches
+    deps: [clean]
+    cmds:
+      - rm -rf node_modules .task src/lib/design/tokens.css

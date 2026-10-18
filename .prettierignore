@@ -1,0 +1,15 @@
+.svelte-kit
+build
+node_modules
+storybook-static
+playwright-report
+test-results
+yarn.lock
+src/lib/design/tokens.css
+.vitest
+.playwright-mcp
+design
+
+# Agent tooling, kept out of the repo but still on disk.
+.agents
+.claude
