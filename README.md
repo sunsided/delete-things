@@ -81,3 +81,7 @@ Atoms use no other components (`TrashIcon`, `DocIcon`, `CheckMark`, `MonoLabel`,
 ## Deploying
 
 `.github/workflows/ci.yml` runs `task ci` with `BASE_PATH=/<repo>` on every push and pull request, so the end-to-end tests run against the build as it ships. On `main` (a push, or a manual run from the Actions tab) a second job publishes that same `build/` to GitHub Pages; pull requests never deploy. Pages has to be enabled with "GitHub Actions" as the source. All URLs in the build are relative, so the same output also works at a domain root or copied into another site.
+
+## License
+
+Copyright © 2026 Markus Mayer. Licensed under the [European Union Public Licence v. 1.2](LICENSE) (EUPL-1.2). The bundled fonts, Instrument Sans and IBM Plex Mono, keep their own SIL Open Font License.
