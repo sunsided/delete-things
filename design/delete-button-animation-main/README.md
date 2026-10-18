@@ -9,6 +9,5 @@ of a document.
 - [`script.js`](script.js) – the actual animation driver
 - [`style.css`](style.css) – the style and keyframe definition
 
-My web development days are long gone, and it shows: emoji for icons, pixel offsets
-picked by eye and a `setTimeout` for every step. It works, though, and perfect is the
-enemy of done. 🙃
+My web development days are long gone, and it shows ... It works, though, and perfect is the
+enemy of done. 😁
