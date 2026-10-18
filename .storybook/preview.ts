@@ -14,9 +14,12 @@ import '../src/lib/fx/fx.css';
  * The same stylesheets, in the same order, as the root layout: a story is the page's
  * component on the page's ground, not a lookalike.
  */
+/** The breakpoints in tokens.ts (sm < 760px, md < 1024px): targets, and the last pixel before each. */
 const viewports = {
 	mobile: { name: 'mobile 375', styles: { width: '375px', height: '812px' }, type: 'mobile' },
+	smEdge: { name: 'sm-edge 759', styles: { width: '759px', height: '1024px' }, type: 'tablet' },
 	tablet: { name: 'tablet 768', styles: { width: '768px', height: '1024px' }, type: 'tablet' },
+	mdEdge: { name: 'md-edge 1023', styles: { width: '1023px', height: '768px' }, type: 'tablet' },
 	desktop: { name: 'desktop 1280', styles: { width: '1280px', height: '900px' }, type: 'desktop' },
 	wide: { name: 'wide 1600', styles: { width: '1600px', height: '1000px' }, type: 'desktop' }
 } as const;

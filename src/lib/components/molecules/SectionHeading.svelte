@@ -25,6 +25,13 @@
 		padding-top: 28px;
 	}
 
+	@media (width < 760px) {
+		.heading {
+			margin: 40px auto 16px;
+			padding-top: 20px;
+		}
+	}
+
 	h2 {
 		margin: 0;
 		font: 600 clamp(26px, 3vw, 36px) / 1.1 var(--font-sans);

@@ -6,7 +6,7 @@ import { font } from '../../design/tokens.ts';
 import { h, S } from '../dom.ts';
 import type { Effect } from '../engine.ts';
 import { btn, setBusy } from '../parts.ts';
-import { CARD, INK, LINE, MUTE, RED } from '../particles.ts';
+import { CARD, INK, LINE, MUTE, RED, RED_TEXT } from '../particles.ts';
 
 const WORD = 'delete';
 
@@ -58,8 +58,8 @@ export default {
 			S(b, {
 				opacity: g ? 1 : 0.35,
 				cursor: g ? 'pointer' : 'not-allowed',
-				background: g ? RED : CARD,
-				borderColor: g ? RED : INK,
+				background: g ? RED_TEXT : CARD,
+				borderColor: g ? RED_TEXT : INK,
 				color: g ? '#fff' : INK
 			});
 			inp.style.borderColor = g ? RED : LINE;

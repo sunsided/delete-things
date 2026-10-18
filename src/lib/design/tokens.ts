@@ -26,14 +26,22 @@ export const color = {
 	body: '#5f5a51',
 	/** Card descriptions. */
 	muted: '#6b665d',
-	/** Eyebrow, card meta, footer. */
-	mono: '#8a8478',
-	/** Primary accent. */
+	/**
+	 * Eyebrow, card meta, footer. The handoff's #8a8478 is 3.3:1 on the page ground, short of
+	 * WCAG AA for 11–12px text; this is the same hue darkened to 4.6:1.
+	 */
+	mono: '#716c62',
+	/** Primary accent, for shapes: rings, blades, fills without text. */
 	red: '#d4462f',
+	/**
+	 * The accent where it carries text: red labels, and red grounds with light text on them.
+	 * The handoff's red is 3.9:1 there; this darker step clears AA at 4.5:1 and up.
+	 */
+	redText: '#c53f29',
 	/** Accent on a dark ground (the undo toast). */
 	redOnDark: '#f39a83',
-	/** Success badge. */
-	green: '#3f8f5a',
+	/** Success badge. Darkened from the handoff's #3f8f5a (3.5:1) to pass AA as 14px text. */
+	green: '#367b4d',
 	/** Fire and sparks. */
 	orange: '#f0a43a',
 	/** Spark core. */
@@ -74,6 +82,13 @@ export const radius = {
 	/** The rubber stamp. */
 	stamp: '6px'
 } as const;
+
+/**
+ * Breakpoints, the same as defx: sm below 760px (phones), md below 1024px (tablets). CSS
+ * writes them literally, `@media (width < 760px)`, since a media query cannot read a custom
+ * property; this is the record of what they are.
+ */
+export const breakpoints = { sm: 760, md: 1024 } as const;
 
 /** The page column. */
 export const pageMax = '1320px';

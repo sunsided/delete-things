@@ -47,4 +47,10 @@
 		grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr));
 		gap: 16px;
 	}
+
+	@media (width < 760px) {
+		.grid {
+			gap: 12px;
+		}
+	}
 </style>

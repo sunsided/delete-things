@@ -2,7 +2,7 @@
 import { font } from '../../design/tokens.ts';
 import { at, h, place, rel } from '../dom.ts';
 import { simple, type Effect } from '../engine.ts';
-import { INK, RED } from '../particles.ts';
+import { INK, RED_TEXT } from '../particles.ts';
 
 export default {
 	badge: null,
@@ -68,7 +68,7 @@ export default {
 			stage,
 			h(
 				'div',
-				{ font: `500 12px/1 ${font.mono}`, color: RED, letterSpacing: '.12em', opacity: 0 },
+				{ font: `500 12px/1 ${font.mono}`, color: RED_TEXT, letterSpacing: '.12em', opacity: 0 },
 				'[ REDACTED ]'
 			),
 			r.cx,

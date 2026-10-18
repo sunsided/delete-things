@@ -19,14 +19,21 @@
 	color: var(--ink);
 	font: 500 15px/1 var(--font-sans);
 	cursor: pointer;
-	/* Hold and slide read the pointer themselves; a scroll or a text selection would steal it. */
-	touch-action: none;
+	/*
+	 * manipulation, not none: a page of forty-one buttons must still scroll when a finger
+	 * lands on one. Hold to confirm switches its own button to none, since it reads the
+	 * pointer itself; the slide knob does the same.
+	 */
+	touch-action: manipulation;
 	user-select: none;
 	-webkit-user-select: none;
 }
 
-.dx-btn:hover:not([data-busy], :disabled) {
-	background: var(--hover);
+/* Only where hovering exists: on touch, a tap would leave the wash stuck on. */
+@media (hover: hover) {
+	.dx-btn:hover:not([data-busy], :disabled) {
+		background: var(--hover);
+	}
 }
 
 .dx-btn[data-busy] {
