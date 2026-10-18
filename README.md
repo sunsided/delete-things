@@ -80,4 +80,4 @@ Atoms use no other components (`TrashIcon`, `DocIcon`, `CheckMark`, `MonoLabel`,
 
 ## Deploying
 
-`.github/workflows/pages.yml` runs `task ci` with `BASE_PATH=/<repo>` and publishes `build/` to GitHub Pages. It only runs when started by hand; enable Pages with "GitHub Actions" as the source first. All URLs in the build are relative, so the same output also works at a domain root or copied into another site.
+`.github/workflows/ci.yml` runs `task ci` with `BASE_PATH=/<repo>` on every push and pull request, so the end-to-end tests run against the build as it ships. On `main` (a push, or a manual run from the Actions tab) a second job publishes that same `build/` to GitHub Pages; pull requests never deploy. Pages has to be enabled with "GitHub Actions" as the source. All URLs in the build are relative, so the same output also works at a domain root or copied into another site.
