@@ -40,7 +40,7 @@ src/lib/design/        tokens.ts is the single source; tokens.css is generated a
 src/routes/            the one page: binds the catalog to the lab template
 scripts/serve.ts       a static server that behaves like the host, BASE_PATH included
 e2e/                   Playwright: the page, keyboard paths, axe, layout, reduced motion
-design/                the Claude Design handoff this was built from
+design/                the design handoff this was built from
 ```
 
 There is no `svelte.config.js`; the SvelteKit configuration lives inline in `vite.config.ts`.

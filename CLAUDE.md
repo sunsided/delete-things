@@ -1,7 +1,7 @@
 # Working in this repo
 
 A single prerendered SvelteKit page that showcases 61 delete-button animations, plus a
-Storybook. The values in the Claude Design handoff (`design/README.md`) are final: colours,
+Storybook. The values in the design handoff (`design/README.md`) are final: colours,
 type, spacing, durations and easings are reproduced exactly. `design/` is reference only;
 never edit it.
 
