@@ -1,8 +1,8 @@
 # Sixty ways to delete a file
 
-A while ago I built a silly little delete button: you click it, the trash can slides to the middle, a document emoji drops into it, and the whole thing politely fades out to a green "Deleted". It used emoji, hard-coded pixel offsets and a cascade of `setTimeout`s, and its README conceded that my web development days were long gone (it lives on in [`design/delete-button-animation-main/`](design/delete-button-animation-main/), done rather than perfect). It was time to redo this, and things escalated: here's a page plenty more of them, each a different way of making a file go away, plus an extra that deletes the page itself (because why not).
+A while ago I built a silly little delete button: you click it, the trash can slides to the middle, a document emoji drops into it, and the whole thing politely fades out to a green "Deleted". It used emoji, hard-coded pixel offsets, and a cascade of `setTimeout`s, and its README conceded that my web development days were long gone (it lives on in [`design/delete-button-animation-main/`](design/delete-button-animation-main/), done rather than perfect). It was time to redo it, and things escalated: what came out is a page with sixty of them, each a different way of making a file go away, plus one that deletes the page itself (because why not; it comes back).
 
-This repository turns that prototype into a real thing: a prerendered SvelteKit page, a Storybook with the components laid out by atomic design, and an animation engine in plain TypeScript with one module per effect. Five of the buttons are honestly good UX (hold to confirm, an undo window, slide to delete, an inline "are you sure?" and type to confirm); the other fifty-six are a shredder, a black hole, a paper plane, a one-tonne weight, a robot vacuum, a hydra that grows two heads for every one you delete, and friends. They all run on the Web Animations API and nothing but boxes, gradients and `clip-path`: no images, no SVGs, no emoji this time.
+This repository is the result: a prerendered SvelteKit page, a Storybook with the components laid out by atomic design, and an animation engine in plain TypeScript with one module per effect. Five of the buttons are honestly good UX (hold to confirm, an undo window, slide to delete, an inline "are you sure?", and type to confirm); the other fifty-six are a shredder, a black hole, a paper plane, a one-tonne weight, a robot vacuum, a hydra that grows two heads for every one you delete, and friends. They all run on the Web Animations API with nothing but boxes, gradients, and `clip-path` (i.e. no images, no SVGs, and no emoji this time).
 
 ## Setup
 
@@ -40,7 +40,7 @@ src/lib/design/        tokens.ts is the single source; tokens.css is generated a
 src/routes/            the one page: binds the catalog to the lab template
 scripts/serve.ts       a static server that behaves like the host, BASE_PATH included
 e2e/                   Playwright: the page, keyboard paths, axe, layout, reduced motion
-design/                the Claude Design handoff this was built from
+design/                the design handoff this was built from
 ```
 
 There is no `svelte.config.js`; the SvelteKit configuration lives inline in `vite.config.ts`.
