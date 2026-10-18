@@ -1,0 +1,72 @@
+name: CI
+
+# Runs the same `task ci` a local checkout runs: lint, type check, unit tests, build,
+# the full Playwright matrix including the JavaScript-disabled project, and a Storybook
+# build as a compile gate.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # package-manager-cache must be off. It defaults to true in setup-node v5, which
+      # runs `yarn cache dir` to locate the cache — before Corepack is enabled below, so
+      # that call hits the runner's bundled Yarn 1.22, which refuses a project pinning
+      # "packageManager": yarn@4 and fails the job. Dropping the `cache:` input alone does
+      # not stop it. The Yarn cache is restored explicitly further down instead.
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - uses: arduino/setup-task@v2
+        with:
+          version: 3.x
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Puts the yarn shim in the Node that setup-node just installed, so `yarn` from here
+      # on is the 4.x pinned by packageManager.
+      - run: corepack enable
+
+      - name: Cache Yarn downloads
+        uses: actions/cache@v4
+        with:
+          path: ~/.yarn/berry/cache
+          key: yarn-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          restore-keys: yarn-${{ runner.os }}-
+
+      - run: yarn install --immutable
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+
+      # --with-deps, which the Taskfile's `browsers` task deliberately does not use: it
+      # needs sudo, which is fine on a runner and wrong on a laptop. The task then sees the
+      # browser already on disk and skips itself.
+      - run: yarn playwright install --with-deps chromium
+
+      - run: task ci
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
