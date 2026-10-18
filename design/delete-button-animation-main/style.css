@@ -1,0 +1,158 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+button {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container {
+    position: relative;
+    display: inline-block;
+}
+
+.delete-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    position: relative;
+    height: 40px;
+    width: 150px;
+    transition: all 0.5s ease;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, .1);
+}
+
+.delete-btn:hover {
+    background-color: rgba(255, 0, 0, .05);
+    }
+
+.delete-btn:disabled {
+    /* background-color: #ececec; */
+    background-color: transparent;
+    color: black;
+    opacity: 1;
+    cursor: not-allowed;
+    transition: all 0.5s ease;
+    /* border: 1px dashed rgba(0, 0, 0, 10%); */
+    border: none;
+    box-shadow: none;
+}
+
+.paper-icon {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    opacity: 0;
+    transition: top 0.5s ease, opacity 0.5s ease;
+    z-index: 1;
+}
+
+#trashIcon {
+    position: relative;
+    transition: transform 0.5s ease;}
+
+#deleteText {
+    position: relative;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+#deletionText {
+    position: absolute;
+}
+
+#confirmationText {
+    display: none;
+    position: absolute;
+    left: 45px;
+    color: #7cb342;
+}
+
+.delete-text {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+.trash-can-move {
+    animation: moveToCenter 0.5s ease forwards;
+}
+
+.paper-animate {
+    animation: paperAnimation 1s ease forwards;
+}
+
+.trash-can-end {
+    animation: moveAndFadeOut 0.5s ease forwards;
+}
+
+.confirmation-text {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes moveToCenter {
+    to {
+        transform: translateX(39px);
+        font-size: 24px;
+    }
+}
+
+@keyframes paperAnimation {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        top: -20px;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        top: 10px;
+        opacity: 0;
+    }
+}
+
+@keyframes moveAndFadeOut {
+    0% {
+        transform: translateX(39px);
+        opacity: 1;
+        font-size: 24px;
+    }
+    25% {
+        transform: translateX(15px);
+    }
+    100% {
+        transform: translateX(100px);
+        opacity: 0;
+        /* font-size: 16px; */
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
