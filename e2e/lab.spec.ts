@@ -16,6 +16,16 @@ test('prerenders the copy and every card', async ({ page }) => {
 	await expect(page.getByRole('heading', { level: 3 })).toHaveCount(61);
 });
 
+test('the study number shuffles, then settles on three digits', async ({ page }) => {
+	const shown = page.locator('header [aria-hidden="true"]').first();
+	const said = page.locator('header .visually-hidden');
+	// Assistive technology hears nothing until the shuffle is over, then the result.
+	await expect(said).toHaveText(/^\d{3}$/, { timeout: 3000 });
+	const n = (await said.textContent()) ?? '';
+	expect(n).not.toBe('000');
+	await expect(shown).toHaveText(n);
+});
+
 test('a click deletes, confirms and comes back', async ({ page }) => {
 	const s = stage(page, 'classic');
 	await s.getByRole('button', { name: 'Delete', exact: true }).click();
@@ -112,10 +122,14 @@ test('the cookie banner takes the focus and its Accept deletes', async ({ page }
 test('the hydra grows two, four, then eight heads before it falls', async ({ page }) => {
 	const s = stage(page, 'hydra');
 	const heads = s.getByRole('button', { name: 'Delete', exact: true });
+	// A fresh generation ignores clicks while it springs out; wait until it is armed.
+	const armed = () => expect(heads.last()).not.toHaveAttribute('data-busy');
 	for (const n of [2, 4, 8]) {
+		await armed();
 		await heads.first().click();
 		await expect(s.locator('button:visible')).toHaveCount(n);
 	}
+	await armed();
 	await heads.last().click();
 	await expect(s.getByText('Hydra slain', { exact: true })).toBeVisible({ timeout: 4000 });
 });

@@ -1,10 +1,12 @@
 <!--
 	@component
-	The page header: eyebrow, title, lede, and the button that plays every card at once.
+	The page header: eyebrow with a shuffled study number, title, lede, and the button that
+	plays every card at once.
 -->
 <script lang="ts">
 	import Button from '../atoms/Button.svelte';
 	import MonoLabel from '../atoms/MonoLabel.svelte';
+	import StudyNumber from '../atoms/StudyNumber.svelte';
 	import { useLab } from '../lab-context.ts';
 
 	let {
@@ -19,7 +21,7 @@
 
 <header class="header">
 	<div class="intro">
-		<MonoLabel>{eyebrow}</MonoLabel>
+		<MonoLabel>{eyebrow} <StudyNumber /></MonoLabel>
 		<h1>{title}</h1>
 		<p>{lede}</p>
 	</div>

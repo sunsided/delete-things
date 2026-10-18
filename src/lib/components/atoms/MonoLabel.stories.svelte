@@ -13,7 +13,7 @@
 </script>
 
 {#snippet template(args: Args)}
-	<MonoLabel {...args}>Lab / Interaction study 017</MonoLabel>
+	<MonoLabel {...args}>Lab / Interaction study</MonoLabel>
 {/snippet}
 
 <Story name="Eyebrow" {template} />
