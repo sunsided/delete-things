@@ -117,7 +117,10 @@ export default {
 			grp.getAnimations({ subtree: true }).forEach((a) => a.cancel());
 			b.style.display = 'inline-flex';
 			if (hadFocus) b.focus();
-			await A(
+			// Armed before the spring, not after: a quick second Enter must not be swallowed.
+			ctx.busy = false;
+			setBusy(b, false);
+			A(
 				b,
 				[
 					{ opacity: 0, transform: 'scale(.9)' },
@@ -128,8 +131,6 @@ export default {
 					easing: 'cubic-bezier(.3,1.6,.5,1)'
 				}
 			);
-			ctx.busy = false;
-			setBusy(b, false);
 		};
 		const confirm = async () => {
 			if (confirmed) return;

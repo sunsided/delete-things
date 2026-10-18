@@ -36,7 +36,7 @@ export default defineConfig({
 					name: 'unit',
 					environment: 'node',
 					include: ['src/**/*.{test,spec}.{js,ts}', 'vite/**/*.{test,spec}.ts'],
-					exclude: ['src/**/*.svelte.{test,spec}.{js,ts}']
+					exclude: ['src/**/*.{svelte,browser}.{test,spec}.{js,ts}']
 				}
 			},
 			{
@@ -45,7 +45,7 @@ export default defineConfig({
 				extends: './vite.config.ts',
 				test: {
 					name: 'component',
-					include: ['src/**/*.svelte.{test,spec}.{js,ts}'],
+					include: ['src/**/*.{svelte,browser}.{test,spec}.{js,ts}'],
 					browser: {
 						enabled: true,
 						headless: true,

@@ -20,8 +20,8 @@ export type Card = {
 
 export type Volume = {
 	id: string;
-	/** Volume I sits under the page header and has no heading of its own. */
-	eyebrow?: string;
+	eyebrow: string;
+	/** Volume I sits under the page header and has no visible heading of its own. */
 	heading?: string;
 	cards: Card[];
 };
@@ -339,7 +339,7 @@ export const cards: Card[] = [
 ];
 
 export const volumes: Volume[] = [
-	{ id: 'volume-1', cards: cards.slice(0, 20) },
+	{ id: 'volume-1', eyebrow: 'Volume I', cards: cards.slice(0, 20) },
 	{
 		id: 'volume-2',
 		eyebrow: 'Volume II',

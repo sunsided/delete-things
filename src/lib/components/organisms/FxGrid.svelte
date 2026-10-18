@@ -15,21 +15,30 @@
 	const headingId = $derived(`${volume.id}-heading`);
 </script>
 
-{#if volume.eyebrow && volume.heading}
+{#if volume.heading}
 	<SectionHeading eyebrow={volume.eyebrow} heading={volume.heading} id={headingId} />
 {/if}
-<section
-	class="grid"
-	id={volume.id}
-	aria-labelledby={volume.heading ? headingId : undefined}
-	aria-label={volume.heading ? undefined : 'Volume I'}
->
+<section class="grid" id={volume.id} aria-labelledby={headingId}>
+	{#if !volume.heading}
+		<!-- Without it the cards' h3 would follow the page's h1 directly. -->
+		<h2 class="visually-hidden" id={headingId}>{volume.eyebrow}</h2>
+	{/if}
 	{#each volume.cards as card (card.key)}
 		<FxCard {card} />
 	{/each}
 </section>
 
 <style>
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+
 	.grid {
 		max-width: var(--page-max);
 		margin: 0 auto;

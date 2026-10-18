@@ -127,6 +127,9 @@ export default {
 				toast.remove();
 				b.style.display = 'inline-flex';
 				b.focus();
+				// Armed again at once, so the restored button takes a click during its spring.
+				ctx.busy = false;
+				setBusy(b, false);
 				await A(
 					b,
 					[
@@ -163,8 +166,6 @@ export default {
 					],
 					2200
 				).then(() => n.remove());
-				ctx.busy = false;
-				setBusy(b, false);
 			} else {
 				await A(
 					toast,

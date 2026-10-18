@@ -1,0 +1,101 @@
+import { expect, test, type Page } from '@playwright/test';
+
+const stage = (page: Page, key: string) => page.locator(`[data-fx="${key}"]`);
+
+test.beforeEach(async ({ page }) => {
+	page.on('pageerror', (e) => {
+		throw e;
+	});
+	await page.goto('./');
+});
+
+test('prerenders the copy and every card', async ({ page }) => {
+	await expect(page).toHaveTitle('Forty ways to delete a file.');
+	await expect(page.getByRole('heading', { level: 1 })).toHaveText('Forty ways to delete a file.');
+	await expect(page.locator('[data-fx]')).toHaveCount(41);
+	await expect(page.getByRole('heading', { level: 3 })).toHaveCount(41);
+});
+
+test('a click deletes, confirms and comes back', async ({ page }) => {
+	const s = stage(page, 'classic');
+	await s.getByRole('button', { name: 'Delete', exact: true }).click();
+	await expect(s.getByText('Deleted', { exact: true })).toBeVisible({ timeout: 5000 });
+	await expect(page.getByText('Into the bin: Deleted')).toBeAttached();
+	await expect(s.getByRole('button', { name: 'Delete', exact: true })).toBeVisible({
+		timeout: 5000
+	});
+});
+
+test('hold to confirm backs off when let go early, and deletes when held', async ({ page }) => {
+	const b = stage(page, 'hold').getByRole('button');
+	await b.focus();
+	await page.keyboard.down('Space');
+	await expect(b).toHaveText('Keep holding…');
+	await page.keyboard.up('Space');
+	await expect(b).toHaveText('Hold to delete');
+
+	await page.keyboard.down('Space');
+	await expect(stage(page, 'hold').getByText('Deleted', { exact: true })).toBeVisible({
+		timeout: 4000
+	});
+	await page.keyboard.up('Space');
+});
+
+test('the undo window restores the file', async ({ page }) => {
+	const s = stage(page, 'undo');
+	await s.getByRole('button', { name: 'Delete', exact: true }).click();
+	await s.getByRole('button', { name: 'Undo' }).click();
+	await expect(s.getByText('restored — nothing was lost')).toBeVisible();
+	await expect(s.getByRole('button', { name: 'Delete', exact: true })).toBeVisible();
+});
+
+test('type to confirm stays disabled until the word is typed', async ({ page }) => {
+	const s = stage(page, 'typeconfirm');
+	const b = s.getByRole('button', { name: 'Delete', exact: true });
+	await expect(b).toBeDisabled();
+	await s.getByRole('textbox').fill('delet');
+	await expect(b).toBeDisabled();
+	await s.getByRole('textbox').fill(' DELETE ');
+	await expect(b).toBeEnabled();
+	await page.keyboard.press('Enter');
+	await expect(s.getByText('Deleted', { exact: true })).toBeVisible({ timeout: 4000 });
+});
+
+test('are you sure can be answered from the keyboard', async ({ page }) => {
+	const s = stage(page, 'twostep');
+	await s.getByRole('button', { name: 'Delete', exact: true }).focus();
+	await page.keyboard.press('Enter');
+	// The safe answer gets the focus the vanished button had.
+	await expect(s.getByRole('button', { name: 'Cancel' })).toBeFocused();
+	await page.keyboard.press('Enter');
+	await expect(s.getByRole('button', { name: 'Delete', exact: true })).toBeFocused();
+	await expect(s.getByText('Deleted', { exact: true })).toHaveCount(0);
+
+	await page.keyboard.press('Enter');
+	await expect(s.getByRole('button', { name: 'Cancel' })).toBeFocused();
+	await page.keyboard.press('Tab');
+	await expect(s.getByRole('button', { name: 'Yes, delete' })).toBeFocused();
+	await page.keyboard.press('Enter');
+	await expect(s.getByText('Deleted', { exact: true })).toBeVisible({ timeout: 4000 });
+});
+
+test('delete everything plays every card and the page comes back', async ({ page }) => {
+	await page.getByRole('button', { name: 'Delete everything' }).click();
+	await expect(page.getByText('This page has been deleted.')).toBeVisible({ timeout: 8000 });
+	await expect(page.getByText('This page has been deleted.')).toHaveCount(0, { timeout: 8000 });
+	await expect(page.getByRole('heading', { level: 1 })).toBeInViewport();
+	// Back to idle: every stage holds a control again.
+	await expect(page.locator('[data-fx] :is(button, [role=button], input)').first()).toBeVisible();
+	await expect
+		.poll(
+			() =>
+				page.evaluate(
+					() =>
+						[...document.querySelectorAll('[data-fx]')].filter(
+							(s) => !s.querySelector('button, [role=button], input')
+						).length
+				),
+			{ timeout: 10_000 }
+		)
+		.toBe(0);
+});
