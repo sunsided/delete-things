@@ -1147,7 +1147,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:^2":
+"@sveltejs/kit@npm:^2.70.3":
   version: 2.70.3
   resolution: "@sveltejs/kit@npm:2.70.3"
   dependencies:
@@ -1934,7 +1934,7 @@ __metadata:
     "@storybook/svelte": "npm:^10.6.2"
     "@storybook/sveltekit": "npm:^10.6.2"
     "@sveltejs/adapter-static": "npm:^3.0.10"
-    "@sveltejs/kit": "npm:^2"
+    "@sveltejs/kit": "npm:^2.70.3"
     "@sveltejs/vite-plugin-svelte": "npm:^7.3.1"
     "@types/node": "npm:^26.6.5"
     "@vitest/browser": "npm:^5.0.5"
