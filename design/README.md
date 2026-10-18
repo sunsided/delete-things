@@ -1,12 +1,12 @@
-# Handoff: Delete Lab — Forty-One Deletion Button Animations
+# Handoff: Delete Lab — Sixty-One Deletion Button Animations
 
 ## Overview
-A single-page "lab" showcase on a personal website. It shows 41 interactive delete buttons in two card grids: Volume I (01–20) and Volume II (21–40), plus the bonus #41 "Delete the page". Each one plays its own deletion animation when triggered, shows a confirmation, and resets itself automatically. Five are deliberately good, production-grade UX patterns: 02 Hold to confirm, 06 Undo window, 21 Slide to delete, 22 Are you sure?, and 36 Type to confirm. The rest are playful.
+A single-page "lab" showcase on a personal website. It shows 61 interactive delete buttons in three card grids: Volume I (01–20), Volume II (21–40) with the bonus #41 "Delete the page", and Volume III (42–61, deliberately idiotic). Each one plays its own deletion animation when triggered, shows a confirmation, and resets itself automatically. Five are deliberately good, production-grade UX patterns: 02 Hold to confirm, 06 Undo window, 21 Slide to delete, 22 Are you sure?, and 36 Type to confirm. The rest are playful.
 
 ## About the Design Files
 The files in this bundle are **design references created in HTML**: working prototypes that show the intended look, timing and behaviour. They are not production code to ship as-is. Recreate them in the target codebase using its existing patterns. That could be React or Vue components, plain web components, or whatever the site already uses. If there is no environment yet, a sensible choice is one framework-agnostic `DeleteButton` module per effect (vanilla JS + the Web Animations API), plus a thin page shell.
 
-The prototype's animation engine (`delete-fx.js` and `delete-fx-2.js`) is a reasonable starting point. It is already vanilla JS with no dependencies, built on the Web Animations API (`element.animate`). Refactor it into separate modules rather than copying it wholesale.
+The prototype's animation engine (`delete-fx.js`, `delete-fx-2.js` and `delete-fx-3.js`) is a reasonable starting point. It is already vanilla JS with no dependencies, built on the Web Animations API (`element.animate`). Refactor it into separate modules rather than copying it wholesale.
 
 ## Fidelity
 **High-fidelity.** Colours, type, spacing, durations and easings are final. Recreate them exactly.
@@ -17,7 +17,7 @@ The prototype's animation engine (`delete-fx.js` and `delete-fx-2.js`) is a reas
 - `main`: min-height 100vh, background `#f4f1ea`, padding `56px clamp(20px,4vw,56px) 72px`.
 - **Header** (max-width 1320px, centred, margin-bottom 40px): a wrapping flex row with `justify-content: space-between`, `align-items: flex-end`, gap 24px.
   - Eyebrow: "Lab / Interaction study 017". IBM Plex Mono 500, 12px, uppercase, letter-spacing .08em, `#8a8478`.
-  - H1: "Forty ways to delete a file." Instrument Sans 600, `clamp(36px,5vw,64px)`, line-height 1, letter-spacing −.03em, `text-wrap: balance`.
+  - H1: "Sixty ways to delete a file." Instrument Sans 600, `clamp(36px,5vw,64px)`, line-height 1, letter-spacing −.03em, `text-wrap: balance`.
   - Lede (max-width 720px): Instrument Sans 400, 17px/1.5, `#5f5a51`.
   - **"Delete everything"** button: 48px tall, padding 0 22px, radius 10px, background `#1d1b18`, text `#fbf9f4`, 15px/500. On hover, background and border turn `#d4462f`. It triggers every card's animation, staggered by 90ms per card.
 - **Grid**: `grid-template-columns: repeat(auto-fill, minmax(290px, 1fr))`, gap 16px, max-width 1320px.
@@ -132,6 +132,51 @@ Effects 21, 22 and 36 build their own controls instead of using the base button;
 | Confirm-state green background | `#eef5ef` |
 
 
+## Volume III (42–61) — "Twenty idiotic ones. No notes."
+The section header follows the Volume II pattern: eyebrow "Volume III" and the H2 "Twenty idiotic ones. No notes."
+
+Card tags are all grey: Idiotic, Dark pattern, Passive-aggressive, Petty, or Bureaucratic.
+
+Shared helpers in `delete-fx-3.js`:
+- `say(stage, text, cx, cy, style)`: a centred IBM Plex Mono 500 12px caption in `#8a8478` that fades in (200). `unsay` fades it out (180).
+- `tween(ms, fn, ease)`: an rAF-driven counter for numeric text.
+- `hide(b)`: scales the button to .92 and fades it (160).
+- `toBall(b, r)`: the crumple-to-ball morph from #05.
+- `arc(...)`: generates parabolic keyframe points.
+
+| # | Key | Title / tag | Timeline | Badge |
+|---|---|---|---|---|
+| 42 | runaway | Catch me if you can / Idiotic | Mouse hover (or a click on touch) makes the button jump to a random spot in the stage, at least 90px from where it was (260, `(.2,1.3,.4,1)`). Each jump shows a red caption: "nope", then "too slow", then "lol no". After three jumps the label becomes "fine."; the next click slumps it down (6–12° rotation, scale .6) and fades it (600). | Caught it |
+| 43 | cookies | Cookie consent / Dark pattern | A cookie banner springs up at the bottom of the stage: ink background, 12px text "We use cookies to delete this button.", and a `#f39a83` Accept button. Accepting slides it away. The button morphs into a 52px cookie (`#c9955a` with `#8a5a2b` edge and five `#4a2c17` chips), shakes, and crumbles into a 22-piece crumb burst. | Cookies accepted |
+| 44 | loading | 99% forever / Passive-aggressive | A 200×10 progress bar with the label "Deleting… N%" in mono. It goes 0→99% (900, ease-out), shows "almost there…", creeps to 99.9% (1300), shows "recalculating", drops to 12% (260) with "hmm.", then jumps to 100% with "Done. Don’t ask." | Finally |
+| 45 | robot | Prove you’re human / Dark pattern | A 236px white checkbox card reading "I’m not a robot". Clicking the box turns it into a spinner (1100). It then fails with a red box, the text "You clicked too fast." and a red caption "suspiciously robotic" (1300). Finally it shows a green tick and "fine, we’ll allow it". | Probably human |
+| 46 | sneeze | Achoo / Idiotic | The icon is hidden. The label steps through "ah…" → "ah…!" → "AH…!!", winding up with growing scale and backward lean (380 each). On "CHOO!" droplets (`#9cc3d5`/`#cfe1e9`) spray right and the recoil sends the button off the left edge (700). | Bless you |
+| 47 | nope | Refuses to leave / Petty | A 3D head-shake (`perspective(400px) rotateY ±28°`, 600) with "Nope.", then again with "Still no.". The label becomes "…fine." and a "*sigh*" caption appears. It shuffles off to the left, tilted 8°, and fades (1900). | It left. Eventually. |
+| 48 | approval | Pending approval / Bureaucratic | Five mono rows appear one at a time, each with a spinner that turns into a green tick: submitted, manager approval, legal review, notifying 14 stakeholders, second manager approval. A red "APPROVED" stamp slams down and the stage shakes. | Approved in triplicate |
+| 49 | reverse | Don’t delete / Dark pattern | The label starts as "Don’t delete". Clicking makes it say "OK, I won’t." with a small pulse. After a pause and a "…" caption, it deletes itself anyway (scaleX → 0, 260). | Deleted anyway |
+| 50 | shrink | Technically deleted / Petty | It scales to 1.1, then down to .025 (1300). A mono caption "← technically deleted" points at the remaining speck. | none |
+| 51 | snail | Very slow delete / Passive-aggressive | Mono label "Deleting… 0.000%" counting up to 0.004% over 2600ms, with a caption "ETA: 3–5 business days". A CSS snail crawls 36px along the bottom. The label then becomes "…eh, close enough" and the button pops. | Close enough |
+| 52 | oops | Wrong one / Idiotic | The card's own title and description block (`stage.nextElementSibling`) falls away. A red caption "wait… wrong one" appears and the button jitters. The text springs back, then the button scales out. | Right one this time |
+| 53 | bonk | Delete² / Idiotic | A second Delete button falls onto the first. The bottom one squashes, the top one bounces. Four gold diamonds orbit overhead and a "@#$%!" caption appears. Both fade. | Delete deleted Delete |
+| 54 | hydra | Hydra / Idiotic | Each click replaces the heads with more, smaller buttons: 1 → 2 (scale .8) → 4 (2×2, .62) → 8 (4×2, .4). They spring out from the centre, with captions "cut one off…", "two more grow back", and a red "uh oh". The next click pops every head (ring + burst on each). | Hydra slain |
+| 55 | ship | Shipped to /dev/null / Bureaucratic | A 100×62 cardboard box (`#c9a46b`, flaps `#b58d55`, labelled "/dev/null") rises in. The button shrinks and drops inside. The flaps close one after the other, tape is applied, and the box hops and slides off to the right. | Shipped to /dev/null |
+| 56 | sleep | Five more minutes / Petty | The label becomes "5 more min" and the button tilts −8° and breathes. Four growing "z" letters float up. A red "BEEP BEEP BEEP" sounds; the button says "ugh, FINE", jitters, hops, and leaves to the right. | Up and gone |
+| 57 | party | Congratulations! / Idiotic | A striped red/gold party hat drops onto the button. "Congratulations!" appears at the top (700 22px) and "You deleted 1 file. A personal best." at the bottom (mono). Confetti cannons fire from both bottom corners in five colours. The button bounces, then pops. | none |
+| 58 | onhold | On hold / Passive-aggressive | "Your deletion is important to us." with "You are number 3 in the queue" counting down to 1. ♪ and ♫ notes float up throughout. Then "Connecting you to a deletion specialist…" with "please hold". | Connected & deleted |
+| 59 | screensaver | Screensaver corner / Idiotic | The button scales to .7 and bounces around the stage like an old screensaver. The path is made by folding a straight line (5mx, 3my) back into the stage, so it bounces three times and ends exactly in the top-right corner. The border and text colour change on every bounce (2600 linear). At the corner: a gold ring, a burst, and "CORNER!". | Worth the wait |
+| 60 | paywall | Premium deletion / Dark pattern | A white modal: "Deleting is a Pro feature", "$4.99/mo · cancel anytime*", a red [Upgrade] and an underlined [No thanks], plus the fine print "*you can’t". It auto-picks No thanks after 2.6s. Either choice leads to a free-trial message, and the modal closes. | Deleted (trial) |
+| 61 | binfull | Bin is full / Idiotic | A bin with its lid ajar and three documents sticking out. The button balls up and is thrown; it bounces off the pile back to where it started. A red "bin is full" caption appears. The junk sinks and the bin compacts. The second throw goes in and the lid closes. | Compacted |
+
+**Additional colours (Volume III)**
+
+| Token | Value |
+|---|---|
+| Purple (screensaver only) | `#7a5cc4` |
+| Cookie | `#c9955a` / `#8a5a2b` / `#4a2c17` |
+| Cardboard | `#c9a46b` / `#b58d55` |
+| Packing tape | `rgba(240,228,190,.92)` |
+| Sneeze droplets | `#9cc3d5` / `#cfe1e9` |
+
 ## State management (per button)
 - `busy: boolean`: blocks re-triggering while an animation plays.
 - Hold (#02): `holding: boolean` plus the fill animation's `currentTime` and `playbackRate`.
@@ -182,6 +227,7 @@ These are recommended; the prototype does not fully implement them.
 None. Every icon and effect is built from CSS boxes, gradients and `clip-path`, with no images, SVGs or emoji.
 
 ## Changelog
+- **v4**: Added Volume III (42–61) in `delete-fx-3.js`. The header now reads "Sixty ways…".
 - **v3**:
   - Added Volume II (21–40) and bonus #41.
   - Header copy changed to "Forty ways" and "Five of them are actually good UX".
@@ -194,6 +240,7 @@ None. Every icon and effect is built from CSS boxes, gradients and `clip-path`, 
 
 ## Files
 - `Delete Lab.dc.html`: the page shell (layout, copy, cards). Open it in a browser to see everything working. It loads `delete-fx.js`, and needs `support.js` next to it to run.
+- `delete-fx-3.js`: Volume III effects 42–61. It registers itself the same way as `delete-fx-2.js`.
 - `delete-fx-2.js`: Volume II effects 21–41. It waits for `window.DeleteFX`, then registers its effects through `DeleteFX.register({...})` using the shared helpers in `DeleteFX.kit`.
 - `delete-fx.js`: the core animation engine plus Volume I effects.
   - Helpers: `btn`, `trash`, `doc`, `burst`, `ring`, `jit`, `badge`, `simple`.

@@ -64,7 +64,19 @@ export const color = {
 	ash: '#6b655b',
 	vacuum: '#e9e3d6',
 	curtain: '#b8392a',
-	confirmGround: '#eef5ef'
+	confirmGround: '#eef5ef',
+
+	// Volume III
+	/** The screensaver's last colour. */
+	purple: '#7a5cc4',
+	cookie: '#c9955a',
+	cookieEdge: '#8a5a2b',
+	cookieChip: '#4a2c17',
+	cardboard: '#c9a46b',
+	cardboardFlap: '#b58d55',
+	tape: 'rgba(240,228,190,.92)',
+	droplet: '#9cc3d5',
+	dropletLight: '#cfe1e9'
 } as const;
 
 export type ColorToken = keyof typeof color;

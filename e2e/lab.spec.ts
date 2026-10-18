@@ -10,10 +10,10 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('prerenders the copy and every card', async ({ page }) => {
-	await expect(page).toHaveTitle('Forty ways to delete a file.');
-	await expect(page.getByRole('heading', { level: 1 })).toHaveText('Forty ways to delete a file.');
-	await expect(page.locator('[data-fx]')).toHaveCount(41);
-	await expect(page.getByRole('heading', { level: 3 })).toHaveCount(41);
+	await expect(page).toHaveTitle('Sixty ways to delete a file.');
+	await expect(page.getByRole('heading', { level: 1 })).toHaveText('Sixty ways to delete a file.');
+	await expect(page.locator('[data-fx]')).toHaveCount(61);
+	await expect(page.getByRole('heading', { level: 3 })).toHaveCount(61);
 });
 
 test('a click deletes, confirms and comes back', async ({ page }) => {
@@ -98,4 +98,36 @@ test('delete everything plays every card and the page comes back', async ({ page
 			{ timeout: 10_000 }
 		)
 		.toBe(0);
+});
+
+test('the cookie banner takes the focus and its Accept deletes', async ({ page }) => {
+	const s = stage(page, 'cookies');
+	await s.getByRole('button', { name: 'Delete', exact: true }).focus();
+	await page.keyboard.press('Enter');
+	await expect(s.getByRole('button', { name: 'Accept' })).toBeFocused();
+	await page.keyboard.press('Enter');
+	await expect(s.getByText('Cookies accepted', { exact: true })).toBeVisible({ timeout: 4000 });
+});
+
+test('the hydra grows two, four, then eight heads before it falls', async ({ page }) => {
+	const s = stage(page, 'hydra');
+	const heads = s.getByRole('button', { name: 'Delete', exact: true });
+	for (const n of [2, 4, 8]) {
+		await heads.first().click();
+		await expect(s.locator('button:visible')).toHaveCount(n);
+	}
+	await heads.last().click();
+	await expect(s.getByText('Hydra slain', { exact: true })).toBeVisible({ timeout: 4000 });
+});
+
+test('wrong one puts the card caption back', async ({ page }) => {
+	const s = stage(page, 'oops');
+	const caption = page.locator('article', { has: s }).getByText('Wrong one', { exact: true });
+	await s.getByRole('button').click();
+	await expect(caption).not.toBeInViewport({ ratio: 1 });
+	await expect(s.getByText('Right one this time', { exact: true })).toBeVisible({
+		timeout: 6000
+	});
+	await expect(caption).toBeVisible();
+	expect(await caption.evaluate((e) => e.parentElement!.getAnimations().length)).toBe(0);
 });
