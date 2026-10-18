@@ -39,11 +39,13 @@ test('a finger on a button still scrolls the page, except where pressing is the 
 	page
 }) => {
 	await page.goto('./');
+	// The slide knob is a <span role="button">, so match by role rather than by tag.
 	const touch = (key: string) =>
 		page
-			.locator(`[data-fx="${key}"] button`)
+			.locator(`[data-fx="${key}"] :is(button, [role="button"])`)
 			.first()
 			.evaluate((b) => getComputedStyle(b).touchAction);
 	expect(await touch('classic')).toBe('manipulation');
 	expect(await touch('hold')).toBe('none');
+	expect(await touch('swipe')).toBe('none');
 });
