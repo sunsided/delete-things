@@ -4,8 +4,6 @@ A while ago I built a silly little delete button: you click it, the trash can sl
 
 This repository turns that prototype into a real thing: a prerendered SvelteKit page, a Storybook with the components laid out by atomic design, and an animation engine in plain TypeScript with one module per effect. Five of the buttons are honestly good UX (hold to confirm, an undo window, slide to delete, an inline "are you sure?" and type to confirm); the other fifty-six are a shredder, a black hole, a paper plane, a one-tonne weight, a robot vacuum, a hydra that grows two heads for every one you delete, and friends. They all run on the Web Animations API and nothing but boxes, gradients and `clip-path`: no images, no SVGs, no emoji this time.
 
-The engine has no idea Svelte exists, which is on purpose. The page will end up on GitHub Pages, and some of it will probably move into the lab on [defx.de](https://defx.de), where a script has to earn its place.
-
 ## Setup
 
 You need Node 26 (see `.nvmrc`), Yarn 4 through Corepack, and [Task](https://taskfile.dev):
