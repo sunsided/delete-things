@@ -122,10 +122,14 @@ test('the cookie banner takes the focus and its Accept deletes', async ({ page }
 test('the hydra grows two, four, then eight heads before it falls', async ({ page }) => {
 	const s = stage(page, 'hydra');
 	const heads = s.getByRole('button', { name: 'Delete', exact: true });
+	// A fresh generation ignores clicks while it springs out; wait until it is armed.
+	const armed = () => expect(heads.last()).not.toHaveAttribute('data-busy');
 	for (const n of [2, 4, 8]) {
+		await armed();
 		await heads.first().click();
 		await expect(s.locator('button:visible')).toHaveCount(n);
 	}
+	await armed();
 	await heads.last().click();
 	await expect(s.getByText('Hydra slain', { exact: true })).toBeVisible({ timeout: 4000 });
 });
