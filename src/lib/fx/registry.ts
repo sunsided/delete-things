@@ -44,6 +44,26 @@ import fullstop from './effects/fullstop.ts';
 import redact from './effects/redact.ts';
 import hook from './effects/hook.ts';
 import page from './effects/page.ts';
+import runaway from './effects/runaway.ts';
+import cookies from './effects/cookies.ts';
+import loading from './effects/loading.ts';
+import robot from './effects/robot.ts';
+import sneeze from './effects/sneeze.ts';
+import nope from './effects/nope.ts';
+import approval from './effects/approval.ts';
+import reverse from './effects/reverse.ts';
+import shrink from './effects/shrink.ts';
+import snail from './effects/snail.ts';
+import oops from './effects/oops.ts';
+import bonk from './effects/bonk.ts';
+import hydra from './effects/hydra.ts';
+import ship from './effects/ship.ts';
+import sleep from './effects/sleep.ts';
+import party from './effects/party.ts';
+import onhold from './effects/onhold.ts';
+import screensaver from './effects/screensaver.ts';
+import paywall from './effects/paywall.ts';
+import binfull from './effects/binfull.ts';
 
 export const effects = {
 	classic,
@@ -86,7 +106,27 @@ export const effects = {
 	fullstop,
 	redact,
 	hook,
-	page
+	page,
+	runaway,
+	cookies,
+	loading,
+	robot,
+	sneeze,
+	nope,
+	approval,
+	reverse,
+	shrink,
+	snail,
+	oops,
+	bonk,
+	hydra,
+	ship,
+	sleep,
+	party,
+	onhold,
+	screensaver,
+	paywall,
+	binfull
 } satisfies Record<string, Effect>;
 
 export type FxKey = keyof typeof effects;

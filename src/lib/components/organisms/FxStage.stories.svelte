@@ -19,7 +19,7 @@
 			docs: {
 				description: {
 					component:
-						'The 210px dot-grid stage one effect plays on. Pick any of the 41 with the fx ' +
+						'The 210px dot-grid stage one effect plays on. Pick any of the 61 with the fx ' +
 						'control; speed divides every duration, and with auto-reset off the stage waits ' +
 						'for a click after the badge.'
 				}

@@ -27,9 +27,9 @@ export type Volume = {
 };
 
 export const page = {
-	title: 'Forty ways to delete a file.',
+	title: 'Sixty ways to delete a file.',
 	eyebrow: 'Lab / Interaction study 017',
-	lede: 'A rebuttal, in forty parts. Every button below is real: click it, hold it, swipe it, or regret it. Five of them are actually good UX. The other thirty-five are just for fun.',
+	lede: 'A rebuttal, in sixty parts (plus a bonus). Every button below is real: click it, hold it, swipe it, or regret it. Five of them are actually good UX. The rest range from fun to deeply stupid.',
 	playAll: 'Delete everything',
 	footer: 'Inspired by a silly little delete button. It was right.'
 };
@@ -335,6 +335,148 @@ export const cards: Card[] = [
 		label: 'Delete page',
 		description:
 			'Why stop at one file? Everything on the page falls off the screen. Then everything comes back.'
+	},
+	{
+		n: '42',
+		key: 'runaway',
+		tag: 'Idiotic',
+		title: 'Catch me if you can',
+		description: 'It dodges the cursor three times, then gives up.'
+	},
+	{
+		n: '43',
+		key: 'cookies',
+		tag: 'Dark pattern',
+		title: 'Cookie consent',
+		description: 'Accept the cookies to continue. The button becomes a cookie and crumbles.'
+	},
+	{
+		n: '44',
+		key: 'loading',
+		tag: 'Passive-aggressive',
+		title: '99% forever',
+		description: 'It races to 99%, stalls, drops back to 12%, then finishes anyway.'
+	},
+	{
+		n: '45',
+		key: 'robot',
+		tag: 'Dark pattern',
+		title: 'Prove you’re human',
+		description: 'Tick the box. You clicked too fast, which is suspicious. Fine, you can go.'
+	},
+	{
+		n: '46',
+		key: 'sneeze',
+		tag: 'Idiotic',
+		title: 'Achoo',
+		description: 'Ah… ah… AH… it sneezes itself clean out of the frame.'
+	},
+	{
+		n: '47',
+		key: 'nope',
+		tag: 'Petty',
+		title: 'Refuses to leave',
+		description: 'It shakes its head twice, then shuffles off with a sigh.'
+	},
+	{
+		n: '48',
+		key: 'approval',
+		tag: 'Bureaucratic',
+		title: 'Pending approval',
+		description: 'Five rounds of sign-off, a stamp, and finally permission to delete.'
+	},
+	{
+		n: '49',
+		key: 'reverse',
+		tag: 'Dark pattern',
+		title: 'Don’t delete',
+		label: 'Don’t delete',
+		description: 'Clicking “Don’t delete” makes it promise it won’t. Then it does.'
+	},
+	{
+		n: '50',
+		key: 'shrink',
+		tag: 'Petty',
+		title: 'Technically deleted',
+		description: 'It shrinks to the size of a speck. Still there, technically.'
+	},
+	{
+		n: '51',
+		key: 'snail',
+		tag: 'Passive-aggressive',
+		title: 'Very slow delete',
+		description:
+			'0.004% done, ETA three to five business days. Then it decides that’s close enough.'
+	},
+	{
+		n: '52',
+		key: 'oops',
+		tag: 'Idiotic',
+		title: 'Wrong one',
+		description: 'It deletes the card’s description first, apologises, and puts it back.'
+	},
+	{
+		n: '53',
+		key: 'bonk',
+		tag: 'Idiotic',
+		title: 'Delete²',
+		description: 'A second Delete button falls on the first one. It sees stars.'
+	},
+	{
+		n: '54',
+		key: 'hydra',
+		tag: 'Idiotic',
+		title: 'Hydra',
+		description: 'Delete one and two grow back. Keep going until there are eight.'
+	},
+	{
+		n: '55',
+		key: 'ship',
+		tag: 'Bureaucratic',
+		title: 'Shipped to /dev/null',
+		description: 'Packed into a box, taped shut, and sent off to nowhere.'
+	},
+	{
+		n: '56',
+		key: 'sleep',
+		tag: 'Petty',
+		title: 'Five more minutes',
+		description: 'It dozes off. The alarm goes off. It leaves, grumbling.'
+	},
+	{
+		n: '57',
+		key: 'party',
+		tag: 'Idiotic',
+		title: 'Congratulations!',
+		description: 'Party hat, confetti, the works. You deleted one file.'
+	},
+	{
+		n: '58',
+		key: 'onhold',
+		tag: 'Passive-aggressive',
+		title: 'On hold',
+		description: 'Your deletion is important to us. Please hold while the music plays.'
+	},
+	{
+		n: '59',
+		key: 'screensaver',
+		tag: 'Idiotic',
+		title: 'Screensaver corner',
+		description: 'It bounces around the edges, changing colour, until it finally lands in a corner.'
+	},
+	{
+		n: '60',
+		key: 'paywall',
+		tag: 'Dark pattern',
+		title: 'Premium deletion',
+		description: 'Deleting is a Pro feature. You get one free trial.'
+	},
+	{
+		n: '61',
+		key: 'binfull',
+		tag: 'Idiotic',
+		title: 'Bin is full',
+		description: 'The first throw bounces off the full bin. Compact it, then throw again.'
 	}
 ];
 
@@ -344,6 +486,12 @@ export const volumes: Volume[] = [
 		id: 'volume-2',
 		eyebrow: 'Volume II',
 		heading: 'Twenty more, because twenty wasn’t enough.',
-		cards: cards.slice(20)
+		cards: cards.slice(20, 41)
+	},
+	{
+		id: 'volume-3',
+		eyebrow: 'Volume III',
+		heading: 'Twenty idiotic ones. No notes.',
+		cards: cards.slice(41)
 	}
 ];

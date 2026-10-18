@@ -1,6 +1,6 @@
 # Working in this repo
 
-A single prerendered SvelteKit page that showcases 41 delete-button animations, plus a
+A single prerendered SvelteKit page that showcases 61 delete-button animations, plus a
 Storybook. The values in the Claude Design handoff (`design/README.md`) are final: colours,
 type, spacing, durations and easings are reproduced exactly. `design/` is reference only;
 never edit it.
@@ -16,7 +16,7 @@ never edit it.
 - Timing goes through `ctx.A` and `ctx.wait`, never raw `setTimeout`/`animate` for timeline
   steps: they apply the speed and stop when the cycle's `ctx.signal` aborts. Loops,
   intervals and observers must stop on `ctx.signal` too. Anything an effect touches outside
-  its stage (only #41 does) must be restored on abort.
+  its stage (#41 the page, #52 its card's caption) must be restored on abort.
 - Custom setups check `ctx.busy`, set it with `setBusy(b, true)`, and set `ctx.play` so
   "Delete everything" can trigger them.
 - `<i>` is the decorative-particle tag; `h('i')` marks it `aria-hidden`. Clones of the

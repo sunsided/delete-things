@@ -71,3 +71,23 @@
 <Story exportName="Effect39" name="39 Redacted" args={{ n: '39' }} {template} />
 <Story exportName="Effect40" name="40 Reeled in" args={{ n: '40' }} {template} />
 <Story exportName="Effect41" name="41 Delete the page" args={{ n: '41' }} {template} />
+<Story exportName="Effect42" name="42 Catch me if you can" args={{ n: '42' }} {template} />
+<Story exportName="Effect43" name="43 Cookie consent" args={{ n: '43' }} {template} />
+<Story exportName="Effect44" name="44 99% forever" args={{ n: '44' }} {template} />
+<Story exportName="Effect45" name="45 Prove you’re human" args={{ n: '45' }} {template} />
+<Story exportName="Effect46" name="46 Achoo" args={{ n: '46' }} {template} />
+<Story exportName="Effect47" name="47 Refuses to leave" args={{ n: '47' }} {template} />
+<Story exportName="Effect48" name="48 Pending approval" args={{ n: '48' }} {template} />
+<Story exportName="Effect49" name="49 Don’t delete" args={{ n: '49' }} {template} />
+<Story exportName="Effect50" name="50 Technically deleted" args={{ n: '50' }} {template} />
+<Story exportName="Effect51" name="51 Very slow delete" args={{ n: '51' }} {template} />
+<Story exportName="Effect52" name="52 Wrong one" args={{ n: '52' }} {template} />
+<Story exportName="Effect53" name="53 Delete²" args={{ n: '53' }} {template} />
+<Story exportName="Effect54" name="54 Hydra" args={{ n: '54' }} {template} />
+<Story exportName="Effect55" name="55 Shipped to /dev/null" args={{ n: '55' }} {template} />
+<Story exportName="Effect56" name="56 Five more minutes" args={{ n: '56' }} {template} />
+<Story exportName="Effect57" name="57 Congratulations!" args={{ n: '57' }} {template} />
+<Story exportName="Effect58" name="58 On hold" args={{ n: '58' }} {template} />
+<Story exportName="Effect59" name="59 Screensaver corner" args={{ n: '59' }} {template} />
+<Story exportName="Effect60" name="60 Premium deletion" args={{ n: '60' }} {template} />
+<Story exportName="Effect61" name="61 Bin is full" args={{ n: '61' }} {template} />
