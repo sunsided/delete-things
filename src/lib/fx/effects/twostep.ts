@@ -6,7 +6,7 @@ import { font } from '../../design/tokens.ts';
 import { h } from '../dom.ts';
 import type { Effect } from '../engine.ts';
 import { btn, setBusy } from '../parts.ts';
-import { CARD, INK, LINE, MUTE, RED } from '../particles.ts';
+import { CARD, INK, LINE, MUTE, RED_TEXT } from '../particles.ts';
 
 const SPRING = 'cubic-bezier(.3,1.4,.5,1)';
 
@@ -36,9 +36,9 @@ export default {
 			{
 				height: '48px',
 				padding: '0 18px',
-				border: `1.5px solid ${RED}`,
+				border: `1.5px solid ${RED_TEXT}`,
 				borderRadius: '10px',
-				background: RED,
+				background: RED_TEXT,
 				color: '#fff',
 				font: `600 15px/1 ${font.sans}`,
 				cursor: 'pointer'

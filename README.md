@@ -71,9 +71,10 @@ Atoms use no other components (`TrashIcon`, `DocIcon`, `CheckMark`, `MonoLabel`,
 
 - Reduced motion skips a simple effect's timeline: a 150ms fade, then the badge. The five interactive ones keep their interaction.
 - Each deletion is announced through a polite live region; decorative particles and cloned halves are hidden from assistive technology; focus returns to the stage after a reset; the undo countdown pauses while the pointer or focus is on the toast.
-- The grid column is `min(290px, 100%)`, so a phone narrower than 330px does not scroll sideways.
+- Breakpoints, which the handoff does not have: below 760px the page gets a 16px gutter, tighter spacing and a full-width "Delete everything"; below 1024px the lede spans the full width. The grid column is `min(290px, 100%)`, so a phone narrower than 330px does not scroll sideways.
+- Touch: buttons use `touch-action: manipulation`, so the page scrolls when a finger lands on one; only hold to confirm and the slide knob take the pointer for themselves. The hover wash only applies where hovering exists.
 - Volume I has a visually hidden heading, so the card headings do not jump from `h1` to `h3`.
-- The mono labels (`#8a8478`) and red tags are below WCAG AA contrast at their size. The handoff calls its colours final, so they are unchanged for now and the axe test skips `color-contrast`.
+- Contrast: the handoff's mono labels (`#8a8478`, 3.3:1), the red tags (3.9:1) and the green badge (3.5:1) fall short of WCAG AA at their size. Mono is now `#716c62` and green `#367b4d`, the same hues darkened; red text and red grounds holding text use `redText` (`#c53f29`), while shapes keep the original red. axe runs with every rule.
 
 ## Deploying
 

@@ -10,6 +10,8 @@ export const INK = color.ink;
 export const CARD = color.card;
 export const MUTE = color.mono;
 export const RED = color.red;
+/** Red for text, and for red grounds that hold text. */
+export const RED_TEXT = color.redText;
 export const GREEN = color.green;
 export const LINE = color.line;
 export const ORANGE = color.orange;

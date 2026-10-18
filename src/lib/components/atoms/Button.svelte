@@ -26,9 +26,11 @@
 		white-space: nowrap;
 	}
 
-	button:hover {
-		background: var(--red);
-		border-color: var(--red);
+	@media (hover: hover) {
+		button:hover {
+			background: var(--red-text);
+			border-color: var(--red-text);
+		}
 	}
 
 	button:focus-visible {

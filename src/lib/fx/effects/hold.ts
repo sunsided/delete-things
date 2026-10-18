@@ -28,7 +28,8 @@ export default {
 			transform: 'scaleX(0)'
 		});
 		b.prepend(fill);
-		S(b, { overflow: 'hidden' });
+		// The press is the gesture here, so the browser may not turn it into a scroll.
+		S(b, { overflow: 'hidden', touchAction: 'none' });
 		const fa = fill.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], {
 			duration: D,
 			fill: 'both',

@@ -35,6 +35,6 @@
 	}
 
 	.accent {
-		color: var(--red);
+		color: var(--red-text);
 	}
 </style>

@@ -57,4 +57,31 @@
 		color: var(--body);
 		text-wrap: pretty;
 	}
+
+	/* Tablets: the lede takes the full width, and the button goes under it. */
+	@media (width < 1024px) {
+		.intro {
+			max-width: none;
+		}
+	}
+
+	@media (width < 760px) {
+		.header {
+			margin-bottom: 28px;
+			gap: 20px;
+		}
+
+		.intro {
+			gap: 12px;
+		}
+
+		p {
+			font-size: 16px;
+		}
+
+		/* Full width on a phone: a thumb-sized target, and no orphaned button on the left. */
+		.header > :global(button) {
+			width: 100%;
+		}
+	}
 </style>

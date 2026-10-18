@@ -27,6 +27,16 @@ never edit it.
 - Colours come from `src/lib/design/tokens.ts` (`color.*`, or the short names in
   `particles.ts`); one-off hexes from the prototype stay literal.
 
+## Responsive and accessible
+
+- Breakpoints as in defx, written literally: `@media (width < 760px)` (sm) and
+  `(width < 1024px)` (md); `tokens.ts` records them as `breakpoints`. `e2e/layout.spec.ts`
+  checks both sides of each, and that nothing scrolls sideways from 320px up.
+- Hover styles go inside `@media (hover: hover)`. Buttons keep `touch-action: manipulation`;
+  only a control that reads the pointer itself (hold, the slide knob) sets `none`.
+- Text colours must pass WCAG AA; axe runs with every rule at 375 and 1280px. Red text, and
+  red grounds holding text, use `redText`; `red` is for shapes.
+
 ## Components
 
 `src/lib/components/{atoms,molecules,organisms,templates}`. Atoms use no other components;

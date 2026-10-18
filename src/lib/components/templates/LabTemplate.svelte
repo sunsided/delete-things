@@ -49,4 +49,15 @@
 		font: 400 12px/1.5 var(--font-mono);
 		color: var(--mono);
 	}
+
+	/* Phones: a 16px gutter, and less air above the title, so a card shows on the first screen. */
+	@media (width < 760px) {
+		.lab {
+			padding: 32px 16px 48px;
+		}
+
+		footer {
+			margin-top: 32px;
+		}
+	}
 </style>
