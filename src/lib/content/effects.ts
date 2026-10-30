@@ -32,6 +32,8 @@ export const page = {
 	eyebrow: 'Lab / Interaction study',
 	lede: 'A rebuttal, in eighty parts (plus a bonus). Every button below is real: click it, hold it, swipe it, or regret it. Five of them are actually good UX. The rest range from fun to deeply stupid.',
 	playAll: 'Delete everything',
+	/** The source, linked from the GitHub mark top right. */
+	repo: 'https://github.com/sunsided/delete-things',
 	footer: 'Inspired by a silly little delete button. It was right.'
 };
 
