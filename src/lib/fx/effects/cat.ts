@@ -1,22 +1,63 @@
 /**
- * 63 · Off the table: a paw comes in from the side, taps the button, waits, taps again, and
- * slowly pushes it over the edge.
+ * 63 · Off the table: a cat's arm reaches in from the side, taps the button, waits, taps
+ * again, and slowly pushes it over the edge.
  */
 import { color } from '../../design/tokens.ts';
 import { h, place, rel } from '../dom.ts';
 import { simple, type Effect } from '../engine.ts';
 import { INK, LINE } from '../particles.ts';
 
-const bean = (x: number, y: number, s: number) =>
-	h('i', {
-		position: 'absolute',
-		left: x + 'px',
-		top: y + 'px',
-		width: s + 'px',
-		height: s + 'px',
-		borderRadius: '50%',
-		background: color.furBean
-	});
+const ARM = 34;
+
+/**
+ * A tabby's foreleg seen from the side: a striped forearm running off to the right, and a
+ * round paw at its left end with two toe creases and a pad peeking out underneath. The
+ * arm is as wide as the stage, so however far it reaches, its shoulder stays out of frame.
+ */
+function arm(w: number) {
+	const fur = (s: object) =>
+		h('i', {
+			position: 'absolute',
+			background: color.fur,
+			border: `1.5px solid ${INK}`,
+			boxSizing: 'border-box',
+			...s
+		});
+	const crease = (top: number) =>
+		h('i', {
+			position: 'absolute',
+			left: '-1px',
+			top: top + 'px',
+			width: '7px',
+			height: '1.5px',
+			background: INK,
+			borderRadius: '1px'
+		});
+	return h('i', { position: 'absolute', width: w + 'px', height: ARM + 'px' }, [
+		fur({
+			left: '24px',
+			right: 0,
+			top: '7px',
+			height: '22px',
+			borderLeft: 'none',
+			background: `repeating-linear-gradient(100deg,${color.fur} 0 12px,${color.furStripe} 12px 18px)`
+		}),
+		h('i', {
+			position: 'absolute',
+			left: '9px',
+			bottom: '-2px',
+			width: '14px',
+			height: '7px',
+			borderRadius: '50%',
+			background: color.furBean,
+			border: `1.5px solid ${INK}`,
+			boxSizing: 'border-box'
+		}),
+		fur({ left: 0, top: 0, width: '38px', height: ARM + 'px', borderRadius: '50% 42% 42% 50%' }),
+		crease(11),
+		crease(20)
+	]);
+}
 
 export default {
 	badge: 'Knocked off',
@@ -32,22 +73,7 @@ export default {
 		});
 		stage.insertBefore(table, b);
 		await A(table, [{ opacity: 0 }, { opacity: 1 }], 200);
-		const paw = place(
-			h(
-				'i',
-				{
-					width: '90px',
-					height: '30px',
-					background: color.fur,
-					border: `1.5px solid ${INK}`,
-					borderRadius: '6px 16px 16px 6px',
-					boxSizing: 'border-box'
-				},
-				[bean(8, 6, 6), bean(8, 15, 6), bean(16, 10, 8)]
-			),
-			W,
-			r.cy - 8
-		);
+		const paw = place(arm(W), W, r.cy - ARM / 2 - 4);
 		stage.append(paw);
 		// Where the paw's left edge meets the button, once the button has moved by off.
 		const touch = (off: number) => `translateX(${r.r + off - W}px)`;

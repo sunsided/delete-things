@@ -79,8 +79,9 @@ export const color = {
 	dropletLight: '#cfe1e9',
 
 	// Volume IV
-	/** The cat's paw and its toe beans. */
+	/** The cat's arm, its tabby stripes and its paw pad. */
 	fur: '#e3a868',
+	furStripe: '#c98a4b',
 	furBean: '#e9a3a8',
 	/** The saucer and its tractor beam. */
 	saucer: '#9aa3ab',
