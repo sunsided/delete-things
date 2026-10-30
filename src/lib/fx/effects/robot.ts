@@ -66,7 +66,7 @@ export default {
 				r.cx,
 				r.cy
 			);
-			if (hadFocus) cb.focus();
+			if (hadFocus) cb.focus({ preventScroll: true });
 			A(
 				card,
 				[

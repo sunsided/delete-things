@@ -69,7 +69,7 @@ export default {
 			const accepted = new Promise<void>((ok) =>
 				acc.addEventListener('click', () => ok(), { once: true })
 			);
-			if (hadFocus) acc.focus();
+			if (hadFocus) acc.focus({ preventScroll: true });
 			await A(ban, [{ transform: 'translateY(80px)' }, { transform: 'none' }], {
 				duration: 350,
 				easing: 'cubic-bezier(.3,1.3,.5,1)'

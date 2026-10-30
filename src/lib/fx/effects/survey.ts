@@ -71,7 +71,7 @@ export default {
 			);
 			await hide(ctx, b);
 			stage.append(form);
-			if (hadFocus) opts[0].focus();
+			if (hadFocus) opts[0].focus({ preventScroll: true });
 			await A(
 				form,
 				[

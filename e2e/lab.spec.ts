@@ -36,6 +36,20 @@ test('a click deletes, confirms and comes back', async ({ page }) => {
 	});
 });
 
+test('the reset returns focus without scrolling the page back', async ({ page }) => {
+	const s = stage(page, 'classic');
+	await s.getByRole('button', { name: 'Delete', exact: true }).click();
+	await page.mouse.wheel(0, 2500);
+	await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(1000);
+	const y = await page.evaluate(() => scrollY);
+	// The button is rebuilt and refocused; the page stays where the reader scrolled to.
+	const done = s.getByText('Deleted', { exact: true });
+	await expect(done).toBeAttached({ timeout: 5000 });
+	await expect(done).not.toBeAttached({ timeout: 5000 });
+	await expect(s.getByRole('button', { name: 'Delete', exact: true })).toBeFocused();
+	expect(await page.evaluate(() => scrollY)).toBe(y);
+});
+
 test('hold to confirm backs off when let go early, and deletes when held', async ({ page }) => {
 	const b = stage(page, 'hold').getByRole('button');
 	await b.focus();

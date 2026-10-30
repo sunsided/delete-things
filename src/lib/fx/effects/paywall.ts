@@ -87,7 +87,7 @@ export default {
 			r.cx,
 			r.cy
 		);
-		if (hadFocus) no.focus();
+		if (hadFocus) no.focus({ preventScroll: true });
 		A(
 			m,
 			[

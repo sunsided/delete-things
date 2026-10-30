@@ -77,7 +77,7 @@ export default {
 			b.style.display = 'none';
 			grp.style.display = 'flex';
 			// The focused button just vanished; Cancel is the safe place to land.
-			if (hadFocus) ghost.focus();
+			if (hadFocus) ghost.focus({ preventScroll: true });
 			A(
 				q,
 				[
@@ -116,7 +116,7 @@ export default {
 			grp.style.display = 'none';
 			grp.getAnimations({ subtree: true }).forEach((a) => a.cancel());
 			b.style.display = 'inline-flex';
-			if (hadFocus) b.focus();
+			if (hadFocus) b.focus({ preventScroll: true });
 			// Armed before the spring, not after: a quick second Enter must not be swallowed.
 			ctx.busy = false;
 			setBusy(b, false);
