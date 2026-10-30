@@ -91,3 +91,23 @@
 <Story exportName="Effect59" name="59 Screensaver corner" args={{ n: '59' }} {template} />
 <Story exportName="Effect60" name="60 Premium deletion" args={{ n: '60' }} {template} />
 <Story exportName="Effect61" name="61 Bin is full" args={{ n: '61' }} {template} />
+<Story exportName="Effect62" name="62 Power off" args={{ n: '62' }} {template} />
+<Story exportName="Effect63" name="63 Off the table" args={{ n: '63' }} {template} />
+<Story exportName="Effect64" name="64 Permission denied" args={{ n: '64' }} {template} />
+<Story exportName="Effect65" name="65 Helpful assistant" args={{ n: '65' }} {template} />
+<Story exportName="Effect66" name="66 Spin for it" args={{ n: '66' }} {template} />
+<Story exportName="Effect67" name="67 Zipped" args={{ n: '67' }} {template} />
+<Story exportName="Effect68" name="68 Abducted" args={{ n: '68' }} {template} />
+<Story exportName="Effect69" name="69 The end" args={{ n: '69' }} {template} />
+<Story exportName="Effect70" name="70 Exit survey" args={{ n: '70' }} {template} />
+<Story exportName="Effect71" name="71 Terms of deletion" args={{ n: '71' }} {template} />
+<Story exportName="Effect72" name="72 Load-bearing" args={{ n: '72' }} {template} />
+<Story exportName="Effect73" name="73 Piñata" args={{ n: '73' }} {template} />
+<Story exportName="Effect74" name="74 Magnetised" args={{ n: '74' }} {template} />
+<Story exportName="Effect75" name="75 Going down" args={{ n: '75' }} {template} />
+<Story exportName="Effect76" name="76 Won’t fix" args={{ n: '76' }} {template} />
+<Story exportName="Effect77" name="77 Overinflated" args={{ n: '77' }} {template} />
+<Story exportName="Effect78" name="78 Now you see it" args={{ n: '78' }} {template} />
+<Story exportName="Effect79" name="79 Folded away" args={{ n: '79' }} {template} />
+<Story exportName="Effect80" name="80 Cut, not deleted" args={{ n: '80' }} {template} />
+<Story exportName="Effect81" name="81 Sorted" args={{ n: '81' }} {template} />

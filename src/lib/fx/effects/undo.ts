@@ -95,7 +95,7 @@ export default {
 			// Move focus to Undo when the delete came from the keyboard: the button that had it
 			// is gone, and Undo is the one thing worth reaching.
 			if (stage.contains(document.activeElement) || document.activeElement === document.body)
-				ub.focus();
+				ub.focus({ preventScroll: true });
 
 			// The bar is the clock: the seconds shown are read off it, so pausing it pauses both.
 			const ba = bar.animate([{ transform: 'scaleX(1)' }, { transform: 'scaleX(0)' }], {
@@ -126,7 +126,7 @@ export default {
 				await A(toast, [{ opacity: 1 }, { opacity: 0, transform: 'translateY(6px)' }], 200);
 				toast.remove();
 				b.style.display = 'inline-flex';
-				b.focus();
+				b.focus({ preventScroll: true });
 				// Armed again at once, so the restored button takes a click during its spring.
 				ctx.busy = false;
 				setBusy(b, false);

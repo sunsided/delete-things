@@ -1,8 +1,8 @@
-# Sixty ways to delete a file
+# Eighty ways to delete a file
 
-A while ago I built a silly little delete button: you click it, the trash can slides to the middle, a document emoji drops into it, and the whole thing politely fades out to a green "Deleted". It used emoji, hard-coded pixel offsets, and a cascade of `setTimeout`s (it lives on in [`design/delete-button-animation-main/`](design/delete-button-animation-main/), done rather than perfect). It was time to redo it, and things escalated: what came out is a page with sixty of them, each a different way of making a file go away, plus one that deletes the page itself (because why not; it comes back).
+A while ago I built a silly little delete button: you click it, the trash can slides to the middle, a document emoji drops into it, and the whole thing politely fades out to a green "Deleted". It used emoji, hard-coded pixel offsets, and a cascade of `setTimeout`s (it lives on in [`design/delete-button-animation-main/`](design/delete-button-animation-main/), done rather than perfect). It was time to redo it, and things escalated: what came out is a page with eighty of them, each a different way of making a file go away, plus one that deletes the page itself (because why not; it comes back).
 
-This repository is the result: a prerendered SvelteKit page, a Storybook with the components laid out by atomic design, and an animation engine in plain TypeScript with one module per effect. Five of the buttons are honestly good UX (hold to confirm, an undo window, slide to delete, an inline "are you sure?", and type to confirm); the other fifty-six are a shredder, a black hole, a paper plane, a one-tonne weight, a robot vacuum, a hydra that grows two heads for every one you delete, and friends. They all run on the Web Animations API with nothing but boxes, gradients, and `clip-path` (i.e. no images, no SVGs, and no emoji this time).
+This repository is the result: a prerendered SvelteKit page, a Storybook with the components laid out by atomic design, and an animation engine in plain TypeScript with one module per effect. Five of the buttons are honestly good UX (hold to confirm, an undo window, slide to delete, an inline "are you sure?", and type to confirm); the other seventy-six are a shredder, a black hole, a paper plane, a one-tonne weight, a robot vacuum, a hydra that grows two heads for every one you delete, and friends. They all run on the Web Animations API with nothing but boxes, gradients, and `clip-path` (i.e. no images, no SVGs, and no emoji this time).
 
 ## Setup
 
@@ -74,6 +74,8 @@ Atoms use no other components (`TrashIcon`, `DocIcon`, `CheckMark`, `MonoLabel`,
 - #52 Wrong one animates its card's caption, which sits outside the stage; an aborted cycle puts it back.
 - Volume I has a visually hidden heading, so the card headings do not jump from `h1` to `h3`.
 - Contrast: the handoff's mono labels (`#8a8478`, 3.3:1), the red tags (3.9:1) and the green badge (3.5:1) fall short of WCAG AA at their size. Mono is now `#716c62` and green `#367b4d`, the same hues darkened; red text and red grounds holding text use `redText` (`#c53f29`), while shapes keep the original red. That includes Volume III's red captions, the APPROVED stamp and the Upgrade button. axe runs with every rule.
+- Volume IV (#62–81) has no handoff behind it. It reuses the handoff's tokens, parts and helpers, and adds a handful of colours of its own to `tokens.ts`.
+- #70 Exit survey moves focus to its first answer, like the other custom setups.
 - #59 Screensaver corner changes the button's text colour on every bounce. Its red step uses `redText`; the teal one lasts a few hundred milliseconds mid-flight and stays as designed, below AA.
 
 ## Deploying

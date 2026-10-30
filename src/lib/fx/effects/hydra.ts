@@ -77,7 +77,7 @@ export default {
 						{ duration: 400, easing: 'cubic-bezier(.3,1.5,.5,1)' }
 					);
 				}
-			if (hadFocus) heads[0].focus();
+			if (hadFocus) heads[0].focus({ preventScroll: true });
 			if (cap) unsay(ctx, cap);
 			cap = say(ctx, CAPS[lvl], W / 2, 20, { color: lvl === 3 ? RED_TEXT : MUTE });
 			await wait(420);

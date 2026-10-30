@@ -178,7 +178,7 @@ export function mount(stage: HTMLElement, effect: Effect, opts: MountOptions): C
 				const refocus = hadFocus;
 				run();
 				stage.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300 });
-				if (refocus) stage.querySelector<HTMLElement>(focusable)?.focus();
+				if (refocus) stage.querySelector<HTMLElement>(focusable)?.focus({ preventScroll: true });
 			}
 		};
 		ctx = c;

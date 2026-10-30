@@ -10,10 +10,10 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('prerenders the copy and every card', async ({ page }) => {
-	await expect(page).toHaveTitle('Sixty ways to delete a file.');
-	await expect(page.getByRole('heading', { level: 1 })).toHaveText('Sixty ways to delete a file.');
-	await expect(page.locator('[data-fx]')).toHaveCount(61);
-	await expect(page.getByRole('heading', { level: 3 })).toHaveCount(61);
+	await expect(page).toHaveTitle('Eighty ways to delete a file.');
+	await expect(page.getByRole('heading', { level: 1 })).toHaveText('Eighty ways to delete a file.');
+	await expect(page.locator('[data-fx]')).toHaveCount(81);
+	await expect(page.getByRole('heading', { level: 3 })).toHaveCount(81);
 });
 
 test('the study number shuffles, then settles on three digits', async ({ page }) => {
@@ -34,6 +34,20 @@ test('a click deletes, confirms and comes back', async ({ page }) => {
 	await expect(s.getByRole('button', { name: 'Delete', exact: true })).toBeVisible({
 		timeout: 5000
 	});
+});
+
+test('the reset returns focus without scrolling the page back', async ({ page }) => {
+	const s = stage(page, 'classic');
+	await s.getByRole('button', { name: 'Delete', exact: true }).click();
+	await page.mouse.wheel(0, 2500);
+	await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(1000);
+	const y = await page.evaluate(() => scrollY);
+	// The button is rebuilt and refocused; the page stays where the reader scrolled to.
+	const done = s.getByText('Deleted', { exact: true });
+	await expect(done).toBeAttached({ timeout: 5000 });
+	await expect(done).not.toBeAttached({ timeout: 5000 });
+	await expect(s.getByRole('button', { name: 'Delete', exact: true })).toBeFocused();
+	expect(await page.evaluate(() => scrollY)).toBe(y);
 });
 
 test('hold to confirm backs off when let go early, and deletes when held', async ({ page }) => {
