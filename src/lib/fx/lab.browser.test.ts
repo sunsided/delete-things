@@ -46,7 +46,7 @@ afterEach(() => {
 });
 
 describe('every effect', () => {
-	// All sixty-one at once, the way "Delete everything" plays them: one shared page also
+	// All eighty-one at once, the way "Delete everything" plays them: one shared page also
 	// proves the stages do not reach into each other.
 	it('plays, confirms and resets, without an error', { timeout: 30_000 }, async () => {
 		window.addEventListener('error', onError);

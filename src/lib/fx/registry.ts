@@ -64,6 +64,26 @@ import onhold from './effects/onhold.ts';
 import screensaver from './effects/screensaver.ts';
 import paywall from './effects/paywall.ts';
 import binfull from './effects/binfull.ts';
+import crt from './effects/crt.ts';
+import cat from './effects/cat.ts';
+import sudo from './effects/sudo.ts';
+import assistant from './effects/assistant.ts';
+import slot from './effects/slot.ts';
+import zipper from './effects/zipper.ts';
+import ufo from './effects/ufo.ts';
+import countdown from './effects/countdown.ts';
+import survey from './effects/survey.ts';
+import terms from './effects/terms.ts';
+import jenga from './effects/jenga.ts';
+import pinata from './effects/pinata.ts';
+import magnet from './effects/magnet.ts';
+import elevator from './effects/elevator.ts';
+import ticket from './effects/ticket.ts';
+import inflate from './effects/inflate.ts';
+import magic from './effects/magic.ts';
+import origami from './effects/origami.ts';
+import clipboard from './effects/clipboard.ts';
+import recycle from './effects/recycle.ts';
 
 export const effects = {
 	classic,
@@ -126,7 +146,27 @@ export const effects = {
 	onhold,
 	screensaver,
 	paywall,
-	binfull
+	binfull,
+	crt,
+	cat,
+	sudo,
+	assistant,
+	slot,
+	zipper,
+	ufo,
+	countdown,
+	survey,
+	terms,
+	jenga,
+	pinata,
+	magnet,
+	elevator,
+	ticket,
+	inflate,
+	magic,
+	origami,
+	clipboard,
+	recycle
 } satisfies Record<string, Effect>;
 
 export type FxKey = keyof typeof effects;

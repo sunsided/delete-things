@@ -3,9 +3,9 @@ import { effects, fxKeys } from '$lib/fx/registry';
 import { cards, volumes } from './effects';
 
 describe('the catalog', () => {
-	it('has sixty-one cards numbered 01 to 61', () => {
+	it('has eighty-one cards numbered 01 to 81', () => {
 		expect(cards.map((c) => c.n)).toEqual(
-			Array.from({ length: 61 }, (_, i) => String(i + 1).padStart(2, '0'))
+			Array.from({ length: 81 }, (_, i) => String(i + 1).padStart(2, '0'))
 		);
 	});
 
@@ -13,8 +13,8 @@ describe('the catalog', () => {
 		expect([...cards.map((c) => c.key)].sort()).toEqual([...fxKeys].sort());
 	});
 
-	it('splits into twenty, twenty-one and twenty', () => {
-		expect(volumes.map((v) => v.cards.length)).toEqual([20, 21, 20]);
+	it('splits into twenty, twenty-one, twenty and twenty', () => {
+		expect(volumes.map((v) => v.cards.length)).toEqual([20, 21, 20, 20]);
 	});
 
 	it('has five actually good ones, as the lede promises', () => {

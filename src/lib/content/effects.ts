@@ -27,10 +27,10 @@ export type Volume = {
 };
 
 export const page = {
-	title: 'Sixty ways to delete a file.',
+	title: 'Eighty ways to delete a file.',
 	/** The header adds a random study number, shuffled in on load. */
 	eyebrow: 'Lab / Interaction study',
-	lede: 'A rebuttal, in sixty parts (plus a bonus). Every button below is real: click it, hold it, swipe it, or regret it. Five of them are actually good UX. The rest range from fun to deeply stupid.',
+	lede: 'A rebuttal, in eighty parts (plus a bonus). Every button below is real: click it, hold it, swipe it, or regret it. Five of them are actually good UX. The rest range from fun to deeply stupid.',
 	playAll: 'Delete everything',
 	footer: 'Inspired by a silly little delete button. It was right.'
 };
@@ -478,6 +478,147 @@ export const cards: Card[] = [
 		tag: 'Idiotic',
 		title: 'Bin is full',
 		description: 'The first throw bounces off the full bin. Compact it, then throw again.'
+	},
+	{
+		n: '62',
+		key: 'crt',
+		tag: 'Mechanical',
+		title: 'Power off',
+		description: 'It collapses into a bright line, then a dot, like an old telly switching off.'
+	},
+	{
+		n: '63',
+		key: 'cat',
+		tag: 'Chaos',
+		title: 'Off the table',
+		description: 'A paw taps it once, then again, then pushes it over the edge while you watch.'
+	},
+	{
+		n: '64',
+		key: 'sudo',
+		tag: 'Bureaucratic',
+		title: 'Permission denied',
+		description: 'rm says no. sudo says yes, once it has your password.'
+	},
+	{
+		n: '65',
+		key: 'assistant',
+		tag: 'Passive-aggressive',
+		title: 'Helpful assistant',
+		description: 'Great question! It explains, declines, and then deletes it anyway.'
+	},
+	{
+		n: '66',
+		key: 'slot',
+		tag: 'Petty',
+		title: 'Spin for it',
+		description: 'The label turns into a slot reel. It lands on Keep, then clicks one further.'
+	},
+	{
+		n: '67',
+		key: 'zipper',
+		tag: 'Mechanical',
+		title: 'Zipped',
+		description: 'A zip runs through the middle, and the slider pulls it shut.'
+	},
+	{
+		n: '68',
+		key: 'ufo',
+		tag: 'Cosmic',
+		title: 'Abducted',
+		description: 'A saucer switches on its beam and takes the button with it.'
+	},
+	{
+		n: '69',
+		key: 'countdown',
+		tag: 'Theatrical',
+		title: 'Self-destruct',
+		description: 'Five, four, three, two, one, and the smallest puff you have ever seen.'
+	},
+	{
+		n: '70',
+		key: 'survey',
+		tag: 'Dark pattern',
+		title: 'Exit survey',
+		description: 'Before it goes, it wants to know why. Your answer is deleted too.'
+	},
+	{
+		n: '71',
+		key: 'terms',
+		tag: 'Dark pattern',
+		title: 'Terms of deletion',
+		description:
+			'The terms scroll past faster than anyone could read them, and the box ticks itself.'
+	},
+	{
+		n: '72',
+		key: 'jenga',
+		tag: 'Physics',
+		title: 'Load-bearing',
+		description: 'It was the middle block of a stack. Pull it out and see what happens.'
+	},
+	{
+		n: '73',
+		key: 'pinata',
+		tag: 'Idiotic',
+		title: 'Piñata',
+		description: 'Strung up and whacked until it bursts. The third hit does it.'
+	},
+	{
+		n: '74',
+		key: 'magnet',
+		tag: 'Physics',
+		title: 'Magnetised',
+		description: 'A magnet pulls the label off letter by letter and leaves with all of it.'
+	},
+	{
+		n: '75',
+		key: 'elevator',
+		tag: 'Idiotic',
+		title: 'Going down',
+		description: 'The doors close, the display counts past the basement, and they open on nothing.'
+	},
+	{
+		n: '76',
+		key: 'ticket',
+		tag: 'Bureaucratic',
+		title: 'Won’t fix',
+		description: 'Filed, triaged, blocked, closed as won’t fix. A cleanup job deletes it anyway.'
+	},
+	{
+		n: '77',
+		key: 'inflate',
+		tag: 'Material',
+		title: 'Overinflated',
+		description: 'Three strokes of a pump, each rounder and pinker than the last. Then it pops.'
+	},
+	{
+		n: '78',
+		key: 'magic',
+		tag: 'Theatrical',
+		title: 'Now you see it',
+		description: 'A cloth, a wand, two taps, and nothing underneath.'
+	},
+	{
+		n: '79',
+		key: 'origami',
+		tag: 'Material',
+		title: 'Folded away',
+		description: 'In half, in half again, and once more, then tucked out of sight.'
+	},
+	{
+		n: '80',
+		key: 'clipboard',
+		tag: 'Petty',
+		title: 'Cut, not deleted',
+		description: '⌘X. It isn’t gone, it’s on your clipboard, waiting for a paste.'
+	},
+	{
+		n: '81',
+		key: 'recycle',
+		tag: 'Bureaucratic',
+		title: 'Sorted',
+		description: 'Not glass, not plastic. It was paper all along.'
 	}
 ];
 
@@ -493,6 +634,12 @@ export const volumes: Volume[] = [
 		id: 'volume-3',
 		eyebrow: 'Volume III',
 		heading: 'Twenty idiotic ones. No notes.',
-		cards: cards.slice(41)
+		cards: cards.slice(41, 61)
+	},
+	{
+		id: 'volume-4',
+		eyebrow: 'Volume IV',
+		heading: 'Twenty more, because sixty wasn’t enough either.',
+		cards: cards.slice(61)
 	}
 ];

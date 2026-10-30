@@ -76,7 +76,19 @@ export const color = {
 	cardboardFlap: '#b58d55',
 	tape: 'rgba(240,228,190,.92)',
 	droplet: '#9cc3d5',
-	dropletLight: '#cfe1e9'
+	dropletLight: '#cfe1e9',
+
+	// Volume IV
+	/** The cat's paw and its toe beans. */
+	fur: '#e3a868',
+	furBean: '#e9a3a8',
+	/** The saucer and its tractor beam. */
+	saucer: '#9aa3ab',
+	beam: 'rgba(255,210,122,.45)',
+	/** Elevator doors, the magnet's poles. */
+	steel: '#bdb8ad',
+	/** Success text on the ink ground (the terminal). */
+	greenOnDark: '#8fd19e'
 } as const;
 
 export type ColorToken = keyof typeof color;

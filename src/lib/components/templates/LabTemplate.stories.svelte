@@ -13,7 +13,7 @@
 		argTypes: {
 			speed: { control: { type: 'range', min: 0.25, max: 2, step: 0.05 } },
 			autoReset: { control: 'boolean' },
-			all: { control: 'boolean', description: 'All 61 cards rather than four per volume' }
+			all: { control: 'boolean', description: 'All 81 cards rather than four per volume' }
 		},
 		parameters: { layout: 'fullscreen' }
 	});

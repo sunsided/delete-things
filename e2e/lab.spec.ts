@@ -10,10 +10,10 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('prerenders the copy and every card', async ({ page }) => {
-	await expect(page).toHaveTitle('Sixty ways to delete a file.');
-	await expect(page.getByRole('heading', { level: 1 })).toHaveText('Sixty ways to delete a file.');
-	await expect(page.locator('[data-fx]')).toHaveCount(61);
-	await expect(page.getByRole('heading', { level: 3 })).toHaveCount(61);
+	await expect(page).toHaveTitle('Eighty ways to delete a file.');
+	await expect(page.getByRole('heading', { level: 1 })).toHaveText('Eighty ways to delete a file.');
+	await expect(page.locator('[data-fx]')).toHaveCount(81);
+	await expect(page.getByRole('heading', { level: 3 })).toHaveCount(81);
 });
 
 test('the study number shuffles, then settles on three digits', async ({ page }) => {
