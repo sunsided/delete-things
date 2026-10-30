@@ -1,7 +1,7 @@
 {
 	"name": "delete-things",
 	"private": true,
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "Sixty-one ways to delete a file: a lab of delete-button animations on the Web Animations API",
 	"license": "EUPL-1.2",
 	"author": "Markus Mayer",
