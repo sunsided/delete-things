@@ -530,10 +530,10 @@ export const cards: Card[] = [
 	},
 	{
 		n: '69',
-		key: 'countdown',
+		key: 'sunset',
 		tag: 'Theatrical',
-		title: 'Self-destruct',
-		description: 'Five, four, three, two, one, and the smallest puff you have ever seen.'
+		title: 'The end',
+		description: 'It walks off into the sunset. Letterbox, credits, roll.'
 	},
 	{
 		n: '70',

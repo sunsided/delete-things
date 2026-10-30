@@ -71,7 +71,7 @@ import assistant from './effects/assistant.ts';
 import slot from './effects/slot.ts';
 import zipper from './effects/zipper.ts';
 import ufo from './effects/ufo.ts';
-import countdown from './effects/countdown.ts';
+import sunset from './effects/sunset.ts';
 import survey from './effects/survey.ts';
 import terms from './effects/terms.ts';
 import jenga from './effects/jenga.ts';
@@ -154,7 +154,7 @@ export const effects = {
 	slot,
 	zipper,
 	ufo,
-	countdown,
+	sunset,
 	survey,
 	terms,
 	jenga,

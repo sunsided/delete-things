@@ -98,7 +98,7 @@
 <Story exportName="Effect66" name="66 Spin for it" args={{ n: '66' }} {template} />
 <Story exportName="Effect67" name="67 Zipped" args={{ n: '67' }} {template} />
 <Story exportName="Effect68" name="68 Abducted" args={{ n: '68' }} {template} />
-<Story exportName="Effect69" name="69 Self-destruct" args={{ n: '69' }} {template} />
+<Story exportName="Effect69" name="69 The end" args={{ n: '69' }} {template} />
 <Story exportName="Effect70" name="70 Exit survey" args={{ n: '70' }} {template} />
 <Story exportName="Effect71" name="71 Terms of deletion" args={{ n: '71' }} {template} />
 <Story exportName="Effect72" name="72 Load-bearing" args={{ n: '72' }} {template} />
