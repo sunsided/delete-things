@@ -12,7 +12,13 @@
 
 <LabTemplate footer={page.footer}>
 	{#snippet header()}
-		<LabHeader eyebrow={page.eyebrow} title={page.title} lede={page.lede} action={page.playAll} />
+		<LabHeader
+			eyebrow={page.eyebrow}
+			title={page.title}
+			lede={page.lede}
+			action={page.playAll}
+			repo={page.repo}
+		/>
 	{/snippet}
 	{#each volumes as volume (volume.id)}
 		<FxGrid {volume} />

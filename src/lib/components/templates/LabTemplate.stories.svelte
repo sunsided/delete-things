@@ -22,7 +22,13 @@
 {#snippet template(args: Args)}
 	<LabTemplate speed={args.speed} autoReset={args.autoReset} footer={page.footer}>
 		{#snippet header()}
-			<LabHeader eyebrow={page.eyebrow} title={page.title} lede={page.lede} action={page.playAll} />
+			<LabHeader
+				eyebrow={page.eyebrow}
+				title={page.title}
+				lede={page.lede}
+				action={page.playAll}
+				repo={page.repo}
+			/>
 		{/snippet}
 		{#each volumes as volume (volume.id)}
 			<FxGrid volume={args.all ? volume : { ...volume, cards: volume.cards.slice(0, 4) }} />

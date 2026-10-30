@@ -16,6 +16,12 @@ test('prerenders the copy and every card', async ({ page }) => {
 	await expect(page.getByRole('heading', { level: 3 })).toHaveCount(81);
 });
 
+test('the GitHub mark links back to the repository', async ({ page }) => {
+	const link = page.getByRole('link', { name: 'Source on GitHub' });
+	await expect(link).toHaveAttribute('href', 'https://github.com/sunsided/delete-things');
+	await expect(link).toBeVisible();
+});
+
 test('the study number shuffles, then settles on three digits', async ({ page }) => {
 	const shown = page.locator('header [aria-hidden="true"]').first();
 	const said = page.locator('header .visually-hidden');

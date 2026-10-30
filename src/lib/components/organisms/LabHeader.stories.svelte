@@ -6,7 +6,13 @@
 	const { Story } = defineMeta({
 		title: 'Organisms/LabHeader',
 		component: LabHeader,
-		args: { eyebrow: page.eyebrow, title: page.title, lede: page.lede, action: page.playAll },
+		args: {
+			eyebrow: page.eyebrow,
+			title: page.title,
+			lede: page.lede,
+			action: page.playAll,
+			repo: page.repo
+		},
 		parameters: {
 			layout: 'padded',
 			docs: {

@@ -1,10 +1,11 @@
 <!--
 	@component
-	The page header: eyebrow with a shuffled study number, title, lede, and the button that
-	plays every card at once.
+	The page header: eyebrow with a shuffled study number, title, lede, the button that plays
+	every card at once, and the GitHub mark top right when there is a repository to link.
 -->
 <script lang="ts">
 	import Button from '../atoms/Button.svelte';
+	import GitHubLink from '../atoms/GitHubLink.svelte';
 	import MonoLabel from '../atoms/MonoLabel.svelte';
 	import StudyNumber from '../atoms/StudyNumber.svelte';
 	import { useLab } from '../lab-context.ts';
@@ -13,8 +14,9 @@
 		eyebrow,
 		title,
 		lede,
-		action
-	}: { eyebrow: string; title: string; lede: string; action: string } = $props();
+		action,
+		repo
+	}: { eyebrow: string; title: string; lede: string; action: string; repo?: string } = $props();
 
 	const lab = useLab();
 </script>
@@ -26,10 +28,14 @@
 		<p>{lede}</p>
 	</div>
 	<Button onclick={() => lab.playAll()}>{action}</Button>
+	{#if repo}
+		<div class="repo"><GitHubLink href={repo} /></div>
+	{/if}
 </header>
 
 <style>
 	.header {
+		position: relative;
 		max-width: var(--page-max);
 		margin: 0 auto 40px;
 		display: flex;
@@ -44,6 +50,13 @@
 		flex-direction: column;
 		gap: 14px;
 		max-width: 720px;
+	}
+
+	/* The mark's own top-right corner on the column's; the 44px target overhangs by 10px. */
+	.repo {
+		position: absolute;
+		top: -10px;
+		right: -10px;
 	}
 
 	h1 {
@@ -64,6 +77,11 @@
 	@media (width < 1024px) {
 		.intro {
 			max-width: none;
+		}
+
+		/* Keeps the title clear of the mark; the eyebrow is short, and the lede sits below it. */
+		h1 {
+			padding-right: 40px;
 		}
 	}
 
